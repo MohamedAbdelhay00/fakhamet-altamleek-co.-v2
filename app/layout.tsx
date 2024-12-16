@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+
 import "./globals.css";
+import ThemeProvider from "@/context/Theme";
 
 const poppins = localFont({
   src: [
@@ -59,8 +61,12 @@ const cairo = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Fakhamet Al Tamleek Co.",
-  description: "A Real Estate Company.",
+  title: "Fakhamet Al Tamleek Co. | Premium Real Estate Solutions",
+  description:
+    "Explore premium real estate opportunities with Fakhamet Al Tamleek Co. We specialize in high-quality apartment listings in Jeddah, offering luxurious and modern living spaces tailored to your needs. Discover your dream home today.",
+  icons: {
+    icon: "/images/logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -69,11 +75,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning lang="en">
       <body
         className={`${poppins.variable} ${openSans.variable} ${cairo.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
