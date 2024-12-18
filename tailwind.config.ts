@@ -54,8 +54,8 @@ export default {
       },
       backgroundImage: {
         heroLight: `linear-gradient(
-          rgba(29, 161, 241, 0.7),
-          rgba(29, 161, 241, 0.1)
+          rgba(17, 24, 39, 0.3), 
+          rgba(17, 24, 39, 0.6)
         ), url('/images/newhero.jpg')`,
         heroDark: `linear-gradient(
           rgba(0, 0, 0, 0.2),

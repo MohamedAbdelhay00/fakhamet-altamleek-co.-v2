@@ -6,8 +6,8 @@ import React, { useEffect, useState } from "react";
 
 import MobileNav from "./MobileNav";
 import ModeToggle from "../Theme";
-import NavSection from "./NavSection";
 import NavPages from "./NavPages";
+import NavSection from "./NavSection";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -34,7 +34,7 @@ const Navbar = () => {
       {/* Logo */}
       <Link href="/">
         <div
-          className={`h-12 w-12 bg-contain bg-no-repeat rounded-lg ${
+          className={`size-12 rounded-lg bg-contain bg-no-repeat ${
             scrolled || pathname !== "/"
               ? "bg-logoLight dark:bg-logoDark"
               : "bg-logoTransparent"
@@ -43,7 +43,7 @@ const Navbar = () => {
       </Link>
 
       {/* Conditional Navbar Rendering */}
-      {pathname === "/" ? <NavSection /> : <NavPages />}
+      {pathname === "/" ? <NavSection scrolled={scrolled} /> : <NavPages />}
 
       {/* Mode Toggle and MobileNav */}
       <div className="flex items-center gap-4">
