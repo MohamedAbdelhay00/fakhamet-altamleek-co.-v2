@@ -12,34 +12,35 @@ export default {
       colors: {
         primary: {
           "100": "#FFE7D6",
-          "500": "#F36F21",
-          DEFAULT: "#F36F21",
-          foreground: "#FFFFFF",
+          "300": "#D95F1D",
+          "500": "#F56E0F", // Liquid Lava
+          DEFAULT: "#F56E0F", // Liquid Lava
+          foreground: "#FFFFFF", // White for contrast
         },
         dark: {
-          "100": "#243447",
-          "200": "#1B2A38",
-          "300": "#18242F",
-          "400": "#121D26",
-          "500": "#101012",
+          "100": "#1B1B1E", // Gluon Grey
+          "200": "#262626", // Slate Grey
+          "300": "#151419", // Dark Void
+          "400": "#101012", // Slightly darker for variation
+          "500": "#000000", // True black if needed
         },
         light: {
-          "400": "#BFC9DA",
-          "500": "#DCE3F1",
-          "700": "#F4F6F8",
-          "800": "#FFFFFF",
+          "400": "#878787", // Dusty Grey
+          "500": "#F4F4F4", // Slightly off-white for cards or sections
+          "700": "#FBFBFB", // Snow
+          "800": "#FFFFFF", // True white
         },
         background: {
-          DEFAULT: "#FFFFFF",
-          dark: "#243447",
+          DEFAULT: "#FFFFFF", // Light mode background
+          dark: "#151419", // Dark mode background (Dark Void)
         },
         foreground: {
-          DEFAULT: "#243447",
-          dark: "#FFFFFF",
+          DEFAULT: "#151419", // Text for light mode (Dark Void)
+          dark: "#FBFBFB", // Text for dark mode (Snow)
         },
         secondary: {
-          DEFAULT: "#8591A6",
-          foreground: "#FFFFFF",
+          DEFAULT: "#878787", // Dusty Grey for muted elements
+          foreground: "#FFFFFF", // White for contrast
         },
       },
       fontFamily: {
@@ -54,14 +55,14 @@ export default {
       },
       backgroundImage: {
         heroLight: `linear-gradient(
-          rgba(17, 24, 39, 0.3), 
-          rgba(17, 24, 39, 0.6)
+          rgba(21, 20, 25, 0.4), 
+          rgba(21, 20, 25, 0.7)
         ), url('/images/newhero.jpg')`,
         heroDark: `linear-gradient(
-          rgba(0, 0, 0, 0.2),
-          rgba(0, 0, 0, 0.4)
+          rgba(0, 0, 0, 0.3),
+          rgba(0, 0, 0, 0.5)
         ), url('/images/newhero.jpg')`,
-        logoLight: "url('/images/logo.png')",
+        logoLight: "url('/images/new-logo.png')",
         logoDark: "url('/images/logo_dark.png')",
         logoTransparent: "url('/images/nav-logo.png')",
       },

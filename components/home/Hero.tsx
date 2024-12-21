@@ -5,13 +5,13 @@ import { Button } from "../ui/button";
 
 function Hero() {
   return (
-    <div className=" flex h-screen w-full flex-col justify-center gap-y-6 bg-heroLight bg-cover bg-no-repeat px-6 dark:bg-heroDark sm:px-12 md:px-24">
+    <div className="flex h-screen w-full flex-col justify-center gap-y-6 bg-heroLight bg-cover bg-no-repeat px-6 dark:bg-heroDark sm:px-12 md:px-24">
       {/* Content */}
-      <div className="  z-10">
-        <h1 className="text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+      <div className="z-10">
+        <h1 className="text-3xl font-bold leading-tight text-light-800 dark:text-light-800 sm:text-4xl md:text-5xl lg:text-6xl">
           Modern Living in the Heart of Jeddah
         </h1>
-        <p className="w-full my-5 font-open-sans text-base font-normal leading-relaxed text-gray-200 sm:w-10/12 sm:text-lg md:w-7/12 md:text-xl">
+        <p className="my-5 w-full font-open-sans text-base font-normal leading-relaxed text-light-500 dark:text-light-500 sm:w-10/12 sm:text-lg md:w-7/12 md:text-xl">
           Explore our curated selection of apartments, designed for comfort and
           elegance.
         </p>
@@ -21,7 +21,7 @@ function Hero() {
           <Link href="/contact-us">
             <Button
               size="lg"
-              className="w-full bg-[#012D61] font-poppins font-normal text-white hover:bg-[#014A94] dark:bg-[#F36F21] dark:text-white dark:hover:bg-[#D95A1B] sm:w-auto"
+              className="w-full bg-primary-500 font-poppins font-normal text-primary-foreground hover:bg-primary-500 dark:bg-primary-500 dark:text-light-800 dark:hover:bg-primary-500 sm:w-auto"
             >
               Contact Us
             </Button>
@@ -29,7 +29,7 @@ function Hero() {
           <Link href="/projects">
             <Button
               size="lg"
-              className="w-full bg-[#1DA1F2] text-white hover:bg-[#0C85D0] dark:bg-[#243447] dark:text-white dark:hover:bg-[#1B2A38] sm:w-auto"
+              className="w-full bg-light-800 text-dark-100 hover:bg-light-700 dark:bg-dark-200 dark:text-light-500 dark:hover:bg-dark-300 sm:w-auto"
             >
               View Projects
             </Button>

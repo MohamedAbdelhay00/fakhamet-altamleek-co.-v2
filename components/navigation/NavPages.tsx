@@ -18,10 +18,10 @@ const NavPages = () => {
         <Link
           key={link.href}
           href={link.href}
-          className={`mx-1 transition-colors hover:text-[#F36F21] dark:hover:text-[#F36F21] ${
+          className={`mx-1 transition-colors hover:text-primary-500 dark:hover:text-primary-500 ${
             pathname === link.href
-              ? "font-extrabold text-[#F36F21] dark:text-[#F36F21]"
-              : "font-semibold text-gray-700 dark:text-gray-300"
+              ? "font-extrabold text-primary-500 dark:text-primary-500"
+              : "font-semibold text-dark-100 dark:text-light-500"
           }`}
         >
           {link.label}

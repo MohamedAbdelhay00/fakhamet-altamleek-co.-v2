@@ -27,7 +27,7 @@ const Navbar = () => {
     <div
       className={`fixed left-0 top-0 z-50 flex w-full items-center justify-between px-6 py-5 transition-all duration-300 sm:px-24 ${
         scrolled || pathname !== "/"
-          ? "bg-white/70 shadow-md backdrop-blur-md dark:bg-[#1F1F1F]"
+          ? "bg-light-700/70 shadow-md backdrop-blur-md dark:bg-dark-300"
           : "bg-transparent"
       }`}
     >
