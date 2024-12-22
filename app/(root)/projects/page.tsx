@@ -9,27 +9,84 @@ import { Button } from "@/components/ui/button";
 const projects = [
   {
     id: 1,
-    title: "Luxury Apartment",
+    title: "Al fyhaa",
     description:
-      "Experience elegance in every detail of our premium apartments.",
-    price: "$500,000",
-    image: "/images/p1.jpg",
+      "Experience elegance in every detail of our premium apartments. Located in the heart of the city, offering stunning views and top-notch amenities.",
+    price: "500,000",
+    area: "150 - 200 m²",
+    rooms: "3 - 5",
+    apartments: 20,
+    status: "Finished",
+    availability: "Available",
+    startingPrice: "500,000",
+    amenities: [
+      "Swimming Pool",
+      "Gym",
+      "Clubhouse",
+      "Underground Parking",
+      "24/7 Security",
+    ],
+    coverImage: "/images/frontview2.jpg",
+    images: [
+      "/images/fontview.jpg",
+      "/images/apartment1.jpg",
+      "/images/apartment2.jpg",
+    ],
+    location: "Downtown",
     link: "/projects/1",
   },
   {
     id: 2,
-    title: "Urban Oasis",
-    description: "Modern living spaces designed for urban comfort.",
-    price: "$800,000",
-    image: "/images/p2.jpg",
+    title: "Al Fisalyh",
+    description:
+      "Modern living spaces designed for urban comfort. A serene escape in the middle of the bustling city.",
+    price: "800,000",
+    area: "100 - 150 m²",
+    rooms: "2 - 4",
+    apartments: 15,
+    status: "Under Construction",
+    availability: "Limited",
+    startingPrice: "800,000",
+    amenities: [
+      "Rooftop Garden",
+      "Jogging Tracks",
+      "Pet-friendly Zones",
+      "High-speed Elevators",
+    ],
+    coverImage: "/images/newHero.jpg",
+    images: [
+      "/images/fontview1.jpg",
+      "/images/apartment3.jpg",
+      "/images/apartment4.jpg",
+    ],
+    location: "Midtown",
     link: "/projects/2",
   },
   {
     id: 3,
-    title: "Skyline Tower",
-    description: "Soar to new heights with our contemporary tower apartments.",
-    price: "$700,000",
-    image: "/images/p3.jpg",
+    title: "Al Safa",
+    description:
+      "Soar to new heights with our contemporary tower apartments. Enjoy panoramic city views and luxurious interiors.",
+    price: "700,000",
+    area: "120 - 180 m²",
+    rooms: "2 - 3",
+    apartments: 25,
+    status: "Finished",
+    availability: "Available",
+    startingPrice: "700,000",
+    amenities: [
+      "Sky Lounge",
+      "Infinity Pool",
+      "Kids Play Area",
+      "24/7 Concierge",
+    ],
+    coverImage: "/images/outside.jpg",
+    images: [
+      "/images/outside.jpg",
+      "/images/apartment2.jpg",
+      "/images/apartment4.jpg",
+    ],
+    location: "Uptown",
     link: "/projects/3",
   },
 ];
@@ -40,8 +97,8 @@ export default function ProjectsPage() {
     <div>
       {/* Hero Section */}
       <div
-        className="relative h-[40vh] bg-cover"
-        style={{ backgroundImage: "url('/images/projects-hero.jpg')" }}
+        className="relative h-[60vh] bg-cover bg-center"
+        style={{ backgroundImage: "url('/images/outside-frontview.jpg')" }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40"></div>
         <div className="relative flex h-full items-center justify-center text-center">
@@ -74,7 +131,7 @@ export default function ProjectsPage() {
             >
               <div className="group relative aspect-video h-4/5 w-full overflow-hidden">
                 <Image
-                  src={project.image}
+                  src={project.coverImage}
                   alt={project.title}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-110"
@@ -90,9 +147,9 @@ export default function ProjectsPage() {
               </div>
               <div className="flex items-center justify-between bg-transparent p-4">
                 <p className="text-lg font-bold text-primary">
-                  {project.price}
+                  {project.price} SAR
                 </p>
-                <Link href={project.link}>
+                <Link href={`/projects/${project.id}`}>
                   <Button
                     onClick={() => router.push(`projects/2/modal`)}
                     className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-light-700 transition-all duration-300 hover:bg-[#D95A1B] dark:bg-primary dark:hover:bg-[#D95A1B]"

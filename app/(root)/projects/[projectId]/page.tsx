@@ -1,36 +1,78 @@
+// src/pages/project-details.tsx
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
-import Modal from "@/components/Modal";
+import MobileGallery from "@/components/gallery/MobileGallery";
+import ImageGallery from "@/components/ImageGallery";
+import TableC from "@/components/TableC";
 import { Button } from "@/components/ui/button";
 
 const ProjectDetails = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize(); // Set initial value
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const propertyData = {
+    title: "Apartment for sale in Garden Lakes with 1 Bedroom",
+    subtitle: "in 6th of October City by Hyde Park",
+    prices: { start: 6280000, max: 6680000 },
+    size: { min: 71, max: 72 },
+    details: {
+      beds: 1,
+      baths: 1,
+      finishing: "Not Finished",
+      delivery: "2027",
+      saleType: "Developer Sale",
+    },
+    paymentPlan: {
+      downPayment: 314000,
+      monthly: 58880,
+      years: 8,
+    },
+    amenities: [
+      "Clubhouse",
+      "Underground Parking",
+      "Commercial Strip",
+      "Business Hub",
+      "Outdoor Pools",
+      "Bicycle Lanes",
+      "Jogging Trail",
+    ],
+    description:
+      "A 1 bedroom Apartment in Garden Lakes by Hyde Park. The apartment size is 71 m² with 1 bathroom. This property will be ready for delivery not-finished by 2027-06-30.",
+    images: [
+      "/images/outside.jpg",
+      "/images/outside2.jpg",
+      "/images/apartment1.jpg",
+      "/images/apartment2.jpg",
+      "/images/apartment3.jpg",
+      "/images/apartment4.jpg",
+      "/images/apartment5.jpg",
+    ],
+  };
 
   return (
-    <div className="h-full px-4 py-[100px] md:px-20">
-      {/* Image Grid */}
-      <section className="grid h-auto grid-cols-1 grid-rows-1 gap-2 overflow-hidden md:h-[500px] md:grid-cols-5 md:grid-rows-2">
-        <div className="col-span-1 row-span-1 h-[300px] bg-gray-200 bg-[url('/images/outside-frontview.jpg')] bg-cover bg-center md:col-span-3 md:row-span-2 md:h-full"></div>
-
-        <div className="col-start-4 col-end-5 row-start-1 row-end-2 hidden bg-gray-300 bg-[url('/images/outside-frontview.jpg')] bg-cover bg-center md:block"></div>
-
-        <div className="col-start-4 col-end-5 row-start-2 row-end-3 hidden bg-gray-400 bg-[url('/images/outside-frontview.jpg')] bg-cover bg-center md:block"></div>
-
-        <div className="col-start-1 col-end-2 row-span-1 flex items-end justify-end bg-gray-500 bg-[url('/images/outside-frontview.jpg')] bg-cover bg-center md:col-start-5 md:col-end-6 md:row-span-2">
-          <Button
-            onClick={openModal}
-            className="flex w-full justify-between rounded-none"
-          >
-            <span>See All Photos</span> <span>36</span>
-          </Button>
-        </div>
-      </section>
+    <div className="container mx-auto px-4 py-8">
+      {/* Hero Section */}
+      <div className="relative">
+        {isMobile ? (
+          <div className="relative flex w-full justify-center overflow-hidden rounded-lg pt-20">
+            <MobileGallery images={propertyData.images} />
+          </div>
+        ) : (
+          <div className="relative flex w-full justify-center overflow-hidden rounded-lg pt-20">
+            <ImageGallery images={propertyData.images} />
+          </div>
+        )}
+      </div>
 
       {/* Details Section */}
       <section className="mt-6 flex flex-col items-start justify-between md:flex-row">
@@ -90,11 +132,39 @@ const ProjectDetails = () => {
             seeking a serene yet connected environment. Do not miss the chance
             to make this dream home yours.
           </p>
+          <div className="my-10">
+            <TableC />
+          </div>
         </div>
       </section>
 
-      {/* Modal */}
-      {isModalOpen && <Modal closeModal={closeModal} />}
+      {/* Amenities */}
+      <div className="mt-8">
+        <h2 className="text-lg font-semibold text-gray-800">Amenities</h2>
+        <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+          {propertyData.amenities.map((amenity, index) => (
+            <div
+              key={index}
+              className="flex items-center space-x-2 text-gray-700"
+            >
+              {/* Replace `Icon` with your desired icon component */}
+              <span className="text-2xl">
+                {/* Add an appropriate icon here */}
+              </span>
+              <span className="text-sm font-medium">{amenity}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* CTA */}
+      <div className="mt-8 text-center">
+        <Link href={`/contact-us`}>
+          <Button className="rounded bg-primary px-6 py-3 text-white shadow hover:bg-primary/75">
+            Contact Us
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 };
