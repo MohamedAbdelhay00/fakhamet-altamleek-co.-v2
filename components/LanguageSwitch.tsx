@@ -7,7 +7,7 @@ import * as React from "react";
 import { Button } from "@/components/ui/button";
 import { useLocale } from "@/context/LocaleContext";
 
-export default function LanguageSwitch() {
+export default function LanguageSwitch({ scrolled }: { scrolled: boolean }) {
   const router = useRouter();
   const pathname = usePathname(); // Get the current path
   const { locale } = useLocale(); // Get the current locale
@@ -39,10 +39,12 @@ export default function LanguageSwitch() {
         />
       </Button>
       <p
-        className="hidden cursor-pointer font-bold text-light-800 hover:text-primary-500 sm:block"
+        className={`hidden cursor-pointer font-bold sm:block ${
+          scrolled ? "text-dark-100 dark:text-light-800" : "text-light-800"
+        } hover:text-primary-500`}
         onClick={() => handleLocaleSwitch(locale === "en" ? "ar" : "en")}
       >
-        {locale === "en" ? <span>English</span> : <span>العربية</span>}
+        {locale === "en" ? "English" : "العربية"}
       </p>
     </>
   );

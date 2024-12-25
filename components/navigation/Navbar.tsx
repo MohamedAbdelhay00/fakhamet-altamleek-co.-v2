@@ -57,7 +57,7 @@ const Navbar = () => {
       <div className="flex items-center gap-4">
         <ModeToggle />
         <div className="hidden items-center gap-4 sm:flex">
-          <LanguageSwitch />
+          <LanguageSwitch scrolled={scrolled} />
         </div>
         <div className="sm:hidden">
           <MobileNav scrolled={scrolled} />

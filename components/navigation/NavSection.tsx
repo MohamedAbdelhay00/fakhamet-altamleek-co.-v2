@@ -1,7 +1,7 @@
 "use client";
 
-import { useTranslations } from "next-intl";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import React, { useEffect, useState } from "react";
 
 const NavSection = ({ scrolled }: { scrolled: boolean }) => {
