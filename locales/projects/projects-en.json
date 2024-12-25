@@ -1,0 +1,33 @@
+{
+  "projectDetails": {
+    "title": "Our Projects",
+    "subtitle": "Explore our latest projects",
+    "button": "View Details",
+    "cards": [
+      {
+        "id": 1,
+        "title": "Al Fyhaa",
+        "description": "Experience elegance in every detail of our premium apartments.",
+        "price": "500,000 SAR",
+        "image": "/images/p3.jpg",
+        "link": "al-fyhaa"
+      },
+      {
+        "id": 2,
+        "title": "Al Fysaliah",
+        "description": "Modern living spaces designed for urban comfort.",
+        "price": "800,000 SAR",
+        "image": "/images/p2.jpg",
+        "link": "al-fysaliah"
+      },
+      {
+        "id": 3,
+        "title": "Al Safa",
+        "description": "Soar to new heights with our contemporary tower apartments.",
+        "price": "700,000 SAR",
+        "image": "/images/outside-frontview.jpg",
+        "link": "al-safa"
+      }
+    ]
+  }
+}

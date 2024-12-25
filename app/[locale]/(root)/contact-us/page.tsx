@@ -1,11 +1,16 @@
+"use client";
 import { MapPin, Mail, Phone } from "lucide-react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useLocale } from "@/context/LocaleContext";
 
 export default function ContactUs() {
+  const t = useTranslations("contactUs");
+  const { locale } = useLocale();
   return (
     <section className="px-10 pb-10 pt-[110px]">
       <div className="grid h-[screen] grid-cols-1 md:grid-cols-2">
@@ -25,63 +30,70 @@ export default function ContactUs() {
         {/* Right Section - Form & Contact Info */}
         <div className="flex flex-col justify-center py-8 dark:text-light-500 md:px-16">
           <h2 className="mb-4 text-4xl font-extrabold text-dark-100 dark:text-light-700">
-            Get in Touch
+            {t("title")}
           </h2>
           <p className="mb-6 leading-relaxed text-light-400 dark:text-light-500">
-            We would love to hear from you! Use the form below or reach out
-            through our contact details.
+            {t("subtitle")}
           </p>
 
           {/* Form */}
           <form className="mb-8 space-y-4">
             <div>
               <label className="mb-1 block font-medium text-dark-300 dark:text-light-500">
-                Full Name
+                {t("form.fullName")}
               </label>
               <Input
                 className="rounded-md border-light-400 bg-light-700 px-3 py-6 focus:ring-2 focus:ring-primary dark:border-dark-200 dark:bg-dark-400 dark:text-light-700"
-                placeholder="Your Name"
+                placeholder={t("form.fullNamePlaceholder")}
               />
             </div>
             <div>
               <label className="mb-1 block font-medium text-dark-300 dark:text-light-500">
-                Email Address
+                {t("form.emailAddress")}
               </label>
               <Input
                 className="rounded-md border-light-400 bg-light-700 px-3 py-6 focus:ring-2 focus:ring-primary dark:border-dark-200 dark:bg-dark-400 dark:text-light-700"
-                placeholder="your@email.com"
+                placeholder={t("form.emailPlaceholder")}
               />
             </div>
             <div>
               <label className="mb-1 block font-medium text-dark-300 dark:text-light-500">
-                Message
+                {t("form.message")}
               </label>
               <Textarea
                 rows={3}
                 className="rounded-md border-light-400 bg-light-700 focus:ring-2 focus:ring-primary dark:border-dark-200 dark:bg-dark-400 dark:text-light-700"
-                placeholder="Type your message here..."
+                placeholder={t("form.messagePlaceholder")}
               />
             </div>
             <Button
               className="w-full rounded-md bg-primary py-6 font-medium text-primary-foreground transition-all duration-300 hover:bg-primary/90 dark:bg-primary dark:text-primary-foreground dark:hover:bg-primary/90"
               type="submit"
             >
-              Send Message
+              {t("form.button")}
             </Button>
           </form>
 
           {/* Contact Details */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="flex size-10 items-center justify-center rounded-full bg-primary">
+              <div
+                className={`${
+                  locale === "ar" ? "mx-2" : ""
+                } flex size-10 items-center justify-center rounded-full bg-primary hover:bg-primary/75`}
+              >
                 <MapPin size={20} className="text-light-700" />
               </div>
               <p className="text-dark-300 dark:text-light-500">
-                Jeddah, Saudi Arabia
+                {t("details.location")}
               </p>
             </div>
             <div className="flex items-center space-x-3">
-              <div className="flex size-10 items-center justify-center rounded-full bg-primary">
+              <div
+                className={`${
+                  locale === "ar" ? "mx-2" : ""
+                } flex size-10 items-center justify-center rounded-full bg-primary hover:bg-primary/75`}
+              >
                 <Mail size={20} className="text-light-700" />
               </div>
               <p className="text-dark-300 dark:text-light-500">
@@ -89,7 +101,11 @@ export default function ContactUs() {
               </p>
             </div>
             <div className="flex items-center space-x-3">
-              <div className="flex size-10 items-center justify-center rounded-full bg-primary">
+              <div
+                className={`${
+                  locale === "ar" ? "mx-2" : ""
+                } flex size-10 items-center justify-center rounded-full bg-primary hover:bg-primary/75`}
+              >
                 <Phone size={20} className="text-light-700" />
               </div>
               <p className="text-dark-300 dark:text-light-500">

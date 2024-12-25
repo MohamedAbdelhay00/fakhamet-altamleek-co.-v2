@@ -1,48 +1,52 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { notFound } from "next/navigation";
+import { NextIntlClientProvider } from "next-intl";
 
-import "./globals.css";
+import "../globals.css";
+import ROUTES from "@/constants/routes";
+import { LocaleProvider } from "@/context/LocaleContext";
 import ThemeProvider from "@/context/Theme";
 
 const poppins = localFont({
   src: [
     {
-      path: "./fonts/Poppins/Poppins-Black.ttf",
+      path: "../fonts/Poppins/Poppins-Black.ttf",
       weight: "900",
       style: "normal",
     },
     {
-      path: "./fonts/Poppins/Poppins-ExtraBold.ttf",
+      path: "../fonts/Poppins/Poppins-ExtraBold.ttf",
       weight: "800",
       style: "normal",
     },
     {
-      path: "./fonts/Poppins/Poppins-Bold.ttf",
+      path: "../fonts/Poppins/Poppins-Bold.ttf",
       weight: "700",
       style: "normal",
     },
     {
-      path: "./fonts/Poppins/Poppins-SemiBold.ttf",
+      path: "../fonts/Poppins/Poppins-SemiBold.ttf",
       weight: "600",
       style: "normal",
     },
     {
-      path: "./fonts/Poppins/Poppins-Medium.ttf",
+      path: "../fonts/Poppins/Poppins-Medium.ttf",
       weight: "500",
       style: "normal",
     },
     {
-      path: "./fonts/Poppins/Poppins-Regular.ttf",
+      path: "../fonts/Poppins/Poppins-Regular.ttf",
       weight: "400",
       style: "normal",
     },
     {
-      path: "./fonts/Poppins/Poppins-Thin.ttf",
+      path: "../fonts/Poppins/Poppins-Thin.ttf",
       weight: "200",
       style: "normal",
     },
     {
-      path: "./fonts/Poppins/Poppins-ExtraLight.ttf",
+      path: "../fonts/Poppins/Poppins-ExtraLight.ttf",
       weight: "100",
       style: "normal",
     },
@@ -50,12 +54,12 @@ const poppins = localFont({
   variable: "--font-poppins",
 });
 const openSans = localFont({
-  src: "./fonts//Open-sans/OpenSans-VariableFont_wdth,wght.ttf",
+  src: "../fonts/Open-sans/OpenSans-VariableFont_wdth,wght.ttf",
   variable: "--font-open-sans",
   weight: "400 700",
 });
 const cairo = localFont({
-  src: "./fonts/Cairo/Cairo-VariableFont_slnt,wght.ttf",
+  src: "../fonts/Cairo/Cairo-VariableFont_slnt,wght.ttf",
   variable: "--font-cairo",
   weight: "400 700",
 });
@@ -69,13 +73,26 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params: { locale },
 }: Readonly<{
   children: React.ReactNode;
+  params: { locale: string };
 }>) {
+  let messages;
+  try {
+    messages = (await import(`../../locales/${locale}.json`)).default;
+  } catch (error) {
+    notFound();
+  }
+  const routes = ROUTES(locale);
   return (
-    <html suppressHydrationWarning lang="en">
+    <html
+      suppressHydrationWarning
+      lang={locale}
+      dir={locale === "ar" ? "rtl" : "ltr"}
+    >
       <body
         className={`${poppins.variable} ${openSans.variable} ${cairo.variable} antialiased`}
       >
@@ -85,7 +102,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <LocaleProvider locale={locale} routes={routes}>
+            <NextIntlClientProvider locale={locale} messages={messages}>
+              {children}
+            </NextIntlClientProvider>
+          </LocaleProvider>
         </ThemeProvider>
       </body>
     </html>

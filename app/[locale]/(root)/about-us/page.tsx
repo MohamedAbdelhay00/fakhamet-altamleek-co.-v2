@@ -1,10 +1,33 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import React from "react";
 
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/context/LocaleContext";
 
 export default function AboutUs() {
+  const t = useTranslations("aboutUs");
+  const { locale } = useLocale();
+  const visionMission = t.raw("sections.visionMission") as {
+    vision: { title: string; description: string; icon: string };
+    mission: { title: string; description: string; icon: string };
+  };
+
+  const coreValues = t.raw("sections.coreValues.values") as {
+    title: string;
+    description: string;
+    icon: string;
+  }[];
+
+  const milestones = t.raw("sections.byTheNumbers.numbers") as {
+    title: string;
+    value: string;
+    icon: string;
+  }[];
+
   return (
     <div>
       {/* Hero Section */}
@@ -15,8 +38,8 @@ export default function AboutUs() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/40"></div>
         <div className="relative flex h-full items-center justify-center text-center">
           <div className="text-white">
-            <h1 className="text-5xl font-extrabold">About Us</h1>
-            <p className="mt-2 text-lg text-gray-300">Home &gt; About Us</p>
+            <h1 className="text-5xl font-extrabold">{t("title")}</h1>
+            <p className="mt-2 text-lg text-gray-300">{t("breadcrumb")}</p>
           </div>
         </div>
       </div>
@@ -24,7 +47,7 @@ export default function AboutUs() {
       {/* Introduction Section */}
       <section className="px-6 py-16 sm:px-12 md:px-24">
         <h2 className="text-center text-3xl font-bold text-dark-100 dark:text-light-800">
-          Who We Are
+          {t("sections.whoWeAre.title")}
         </h2>
         <div className="mt-10 grid grid-cols-1 gap-12 md:grid-cols-2">
           <div
@@ -33,36 +56,28 @@ export default function AboutUs() {
           ></div>
           <div className="flex flex-col justify-center space-y-4">
             <p className="text-gray-600 dark:text-gray-300">
-              At Fakhamet Altamleek Co., we redefine real estate by delivering
-              exceptional value and service. Our mission is to help clients find
-              their dream homes with ease and confidence.
+              {t("sections.whoWeAre.description")}
             </p>
-            <Link href="/contact-us">
-              <Button className="rounded-md bg-primary px-6 py-3 font-medium text-white hover:bg-primary-500">
-                Learn More
+            <Link href={`/${locale}/contact-us`}>
+              <Button className="rounded-md bg-primary px-6 py-3 font-medium text-white hover:bg-[#D95A1B]">
+                {t("sections.whoWeAre.button")}
+                <Image
+                  src="/icons/arrow.svg"
+                  width={20}
+                  height={20}
+                  alt="see more"
+                  className="invert"
+                />
               </Button>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Mission & Vision */}
-      <section className="bg-gradient-to-r from-gray-100 to-gray-200 px-6 py-16 dark:bg-gradient-to-r dark:from-dark-300 dark:to-dark-400 sm:px-12 md:px-24">
+      {/* Vision & Mission */}
+      <section className="bg-gray-50 px-6 py-16 dark:bg-dark-300 sm:px-12 md:px-24">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2">
-          {[
-            {
-              title: "Our Mission",
-              description:
-                "To revolutionize the real estate industry by delivering unparalleled service, quality, and innovation.",
-              icon: "/icons/mission.svg",
-            },
-            {
-              title: "Our Vision",
-              description:
-                "To be the leading real estate company, known for its commitment to excellence and client satisfaction.",
-              icon: "/icons/eye.svg",
-            },
-          ].map((item, index) => (
+          {Object.values(visionMission).map((item, index) => (
             <div
               key={index}
               className="flex flex-col items-center space-y-4 rounded-lg bg-white p-6 shadow-lg transition-transform hover:scale-105 dark:bg-dark-200"
@@ -90,35 +105,10 @@ export default function AboutUs() {
       {/* Core Values */}
       <section className="px-6 py-16 sm:px-12 md:px-24">
         <h2 className="mb-12 text-center text-3xl font-bold text-dark-100 dark:text-light-800">
-          Our Core Values
+          {t("sections.coreValues.title")}
         </h2>
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            {
-              title: "Integrity",
-              description:
-                "We uphold the highest standards of honesty and fairness.",
-              icon: "/icons/quality.svg",
-            },
-            {
-              title: "Innovation",
-              description:
-                "We bring creative solutions to the ever-changing market.",
-              icon: "/icons/creativity.svg",
-            },
-            {
-              title: "Excellence",
-              description:
-                "We strive for perfection in every project we undertake.",
-              icon: "/icons/achievement.svg",
-            },
-            {
-              title: "Commitment",
-              description:
-                "We are dedicated to meeting our clients' expectations.",
-              icon: "/icons/loyalty.svg",
-            },
-          ].map((value, index) => (
+          {coreValues.map((value, index) => (
             <div
               key={index}
               className="flex flex-col items-center space-y-4 text-center"
@@ -143,30 +133,13 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* Our Milestones */}
+      {/* Milestones */}
       <section className="bg-white px-6 py-16 dark:bg-dark-300 sm:px-12 md:px-24">
         <h2 className="mb-12 text-center text-3xl font-bold text-dark-100 dark:text-light-800">
-          By the Numbers
+          {t("sections.byTheNumbers.title")}
         </h2>
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            {
-              title: "Happy Clients",
-              value: "10K+",
-              icon: "/icons/users.svg",
-            },
-            {
-              title: "Years of Experience",
-              value: "25+",
-              icon: "/icons/experience-.svg",
-            },
-            { title: "Cities Served", value: "15+", icon: "/icons/places.svg" },
-            {
-              title: "Properties Sold",
-              value: "50K+",
-              icon: "/icons/sale-sign.svg",
-            },
-          ].map((stat, index) => (
+          {milestones.map((stat, index) => (
             <div
               key={index}
               className="flex flex-col items-center space-y-4 rounded-lg bg-gray-50 p-6 shadow-md dark:bg-dark-400"
@@ -190,17 +163,18 @@ export default function AboutUs() {
       </section>
 
       {/* Call to Action */}
-      <section className="bg-primary-500 px-2 text-white">
+      <section className="bg-primary px-2 text-white">
         <div className="container mx-auto py-20 text-center">
-          <h2 className="text-4xl font-extrabold">Your Journey Starts Here</h2>
+          <h2 className="text-4xl font-extrabold">
+            {t("sections.callToAction.title")}
+          </h2>
           <p className="mt-4 text-lg">
-            Contact us to explore your dream home or next investment
-            opportunity.
+            {t("sections.callToAction.description")}
           </p>
-          <Link href="/contact-us">
-            <button className="mt-8 rounded-lg bg-white px-8 py-3 font-bold text-primary hover:scale-105">
-              Get in Touch
-            </button>
+          <Link href={`/${locale}/contact-us`}>
+            <Button className="mt-8 rounded-lg bg-white px-10 py-5 font-bold text-primary hover:text-primary hover:bg-primary-foreground hover:scale-105">
+              {t("sections.callToAction.button")}
+            </Button>
           </Link>
         </div>
       </section>

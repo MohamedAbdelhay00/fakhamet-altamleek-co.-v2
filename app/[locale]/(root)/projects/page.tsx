@@ -5,30 +5,38 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import React, { useEffect, useState } from "react";
 
+import { Button } from "@/components/ui/button";
 import { useLocale } from "@/context/LocaleContext";
 
-import { Button } from "../ui/button";
-
-type Project = {
-  id: number;
-  title: string;
-  description: string;
-  price: string;
-  link: string;
-  image: string;
-};
-
 const Projects = () => {
-  const t = useTranslations("projects");
+  type Project = {
+    id: number;
+    title: string;
+    description: string;
+    price: string;
+    image: string;
+    link: string;
+  };
+
+  type ProjectDetails = {
+    title: string;
+    subtitle: string;
+    button: string;
+    cards: Project[];
+  };
+
+  const [projectDetails, setProjectDetails] = useState<ProjectDetails | null>(
+    null
+  );
   const { locale, routes } = useLocale();
-  const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await import(`@/locales/${locale}.json`);
-        const data = response.default.projects.cards;
-        setProjects(data);
+        const response = await import(
+          `@/locales/projects/projects-${locale}.json`
+        );
+        setProjectDetails(response.default.projectDetails);
       } catch (error) {
         console.error("Error loading projects:", error);
       }
@@ -37,23 +45,30 @@ const Projects = () => {
     fetchProjects();
   }, [locale]);
 
+  if (!projectDetails) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <section className="bg-light-700 px-6 py-16 dark:bg-dark-300 sm:px-12 md:px-24">
+    <section className="bg-light-700 px-6 pb-16 pt-[120px] dark:bg-dark-300 sm:px-12 md:px-24">
+      {/* Title and Subtitle */}
       <div className="mb-12 text-center">
         <h2 className="text-3xl font-bold text-dark-100 dark:text-light-700">
-          {t("title")}
+          {projectDetails.title}
         </h2>
         <p className="mt-4 text-light-400 dark:text-light-500">
-          {t("subtitle")}
+          {projectDetails.subtitle}
         </p>
       </div>
 
+      {/* Project Cards */}
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project) => (
+        {projectDetails.cards.map((project) => (
           <div
             key={project.id}
             className="relative h-[450px] overflow-hidden rounded-lg bg-light-700 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl dark:bg-dark-200"
           >
+            {/* Image Section */}
             <div className="group relative aspect-video h-4/5 w-full overflow-hidden">
               <Image
                 src={project.image}
@@ -70,16 +85,18 @@ const Projects = () => {
                 </p>
               </div>
             </div>
+
+            {/* Price and Button */}
             <div className="flex items-center justify-between bg-transparent p-4">
               <p className="text-lg font-bold text-primary">{project.price}</p>
               <Link href={`${routes.projects}/${project.link}`}>
                 <Button className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-light-700 transition-all duration-300 hover:bg-[#D95A1B] dark:bg-primary dark:hover:bg-[#D95A1B]">
-                  {t("button")}
+                  {projectDetails.button}
                   <Image
                     src="/icons/arrow.svg"
                     width={20}
                     height={20}
-                    alt="See Projects"
+                    alt="see more"
                     className="invert"
                   />
                 </Button>

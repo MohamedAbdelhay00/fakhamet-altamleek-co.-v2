@@ -1,19 +1,19 @@
-const sidebarLinks = [
+const sidebarLinks = (locale: string) => [
   {
-    route: "/",
-    label: "Home",
+    route: `/${locale}/`,
+    label: locale === "en" ? "Home" : "الرئيسية",
   },
   {
-    route: "/projects",
-    label: "Projects",
+    route: `/${locale}/projects`,
+    label: locale === "en" ? "Projects" : "المشاريع",
   },
   {
-    route: "/about-us",
-    label: "About Us",
+    route: `/${locale}/about-us`,
+    label: locale === "en" ? "About Us" : "من نحن",
   },
   {
-    route: "/contact-us",
-    label: "Contact Us",
+    route: `/${locale}/contact-us`,
+    label: locale === "en" ? "Contact Us" : "اتصل بنا",
   },
 ];
 

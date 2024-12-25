@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
-import React from "react";
+import { useTranslations } from "next-intl";
+import React, { useEffect, useState } from "react";
 
 import {
   Carousel,
@@ -8,53 +11,44 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { useLocale } from "@/context/LocaleContext";
 
-const reviews = [
-  {
-    id: 1,
-    name: "Abdullah Al-Otaibi",
-    feedback:
-      "Choosing this real estate service was the best decision I ever made. Their team demonstrated exceptional professionalism and expertise. I highly recommend their services to anyone!",
-    avatar: "/images/c1.jpg",
-    rating: 5,
-  },
-  {
-    id: 2,
-    name: "Sara Al-Fayez",
-    feedback:
-      "Their expert negotiation skills helped me sell my property at a great price in no time. I would definitely work with them again.",
-    avatar: "/images/c2.jpg",
-    rating: 5,
-  },
-  {
-    id: 3,
-    name: "Noura Al-Mutairi",
-    feedback:
-      "They patiently answered all our questions, provided valuable insights, and helped us secure our dream home within our budget.",
-    avatar: "/images/c4.jpg",
-    rating: 5,
-  },
-  {
-    id: 4,
-    name: "Fahad Al-Qahtani",
-    feedback:
-      "They presented us with a stunning selection of homes that perfectly matched our preferences. The team's attention to detail and in-depth knowledge of the local market truly impressed us!",
-    avatar: "/images/c3.jpg",
-    rating: 5,
-  },
-];
+type Review = {
+  id: number;
+  name: string;
+  avatar: string;
+  feedback: string;
+  rating: number;
+};
 
 const Reviews = () => {
+  const t = useTranslations("home.testimonials");
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const { locale } = useLocale();
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await import(
+          `@/locales/reviews/reviews-${locale}.json`
+        );
+        setReviews(response.default);
+      } catch (error) {
+        console.error("Error loading projects:", error);
+      }
+    };
+
+    fetchServices();
+  }, [locale]);
   return (
     <section className="w-full bg-light-700 px-6 py-16 dark:bg-dark-300 sm:px-12 md:px-24 ">
       {/* Section Header */}
       <div className="mb-12 text-center">
         <h2 className="text-3xl font-bold text-dark-100 dark:text-light-700">
-          Don’t Trust Us, Trust Their Voice
+          {t("title")}
         </h2>
         <p className="mt-4 text-light-400 dark:text-light-500">
-          Discover heartfelt accounts of joy and fulfillment as our valued
-          clients embark on their quest for their dream homes and investments.
+          {t("subtitle")}
         </p>
       </div>
 

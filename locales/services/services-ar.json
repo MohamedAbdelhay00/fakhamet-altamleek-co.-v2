@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "title": "خدمات التجديد",
+    "description": "بمجرد أن تقرر المضي قدماً في مشروع التجديد، نقدم لك طريقة بسيطة ومريحة للتواصل معنا.",
+    "icon": "/icons/renovation.svg",
+    "color": "bg-primary",
+    "textColor": "text-light-700",
+    "iconBg": "bg-primary",
+    "hoverEffect": "hover:shadow-xl hover:bg-[#D95A1B]"
+  },
+  {
+    "id": 2,
+    "title": "خدمات السباكة",
+    "description": "هدفنا ليس فقط توفير إصلاح سريع ولكن معالجة المشكلة الأساسية لمنع حدوث مشاكل مستقبلية.",
+    "icon": "/icons/plumbing.svg",
+    "color": "bg-snow dark:bg-dark-200",
+    "textColor": "text-dark-100 dark:text-light-700",
+    "iconBg": "bg-primary dark:bg-primary",
+    "hoverEffect": "hover:scale-105 hover:shadow-lg"
+  },
+  {
+    "id": 3,
+    "title": "خدمات الكهرباء",
+    "description": "سنناقش جميع الخيارات المتاحة، ونقدم تقديرات دقيقة للتكلفة، ونجيب عن أي أسئلة قد تكون لديك.",
+    "icon": "/icons/electrical.svg",
+    "color": "bg-light-700 dark:bg-dark-200",
+    "textColor": "text-dark-100 dark:text-light-700",
+    "iconBg": "bg-primary dark:bg-primary",
+    "hoverEffect": "hover:scale-105 hover:shadow-lg"
+  },
+  {
+    "id": 4,
+    "title": "الدهان والجدران",
+    "description": "سنستمع إلى مخاوفك، ونقوم بإجراء فحوصات شاملة، ونحدد أي مناطق قد تحتاج إلى انتباه.",
+    "icon": "/icons/painting.svg",
+    "color": "bg-light-700 dark:bg-dark-200",
+    "textColor": "text-dark-100 dark:text-light-700",
+    "iconBg": "bg-primary dark:bg-primary",
+    "hoverEffect": "hover:scale-105 hover:shadow-lg"
+  },
+  {
+    "id": 5,
+    "title": "الخشب والأرضيات",
+    "description": "سنقدم لك شرحاً مفصلاً للخدمات الموصى بها للخشب أو الأرضيات.",
+    "icon": "/icons/flooring.svg",
+    "color": "bg-light-700 dark:bg-dark-200",
+    "textColor": "text-dark-100 dark:text-light-700",
+    "iconBg": "bg-primary dark:bg-primary",
+    "hoverEffect": "hover:scale-105 hover:shadow-lg"
+  }
+]

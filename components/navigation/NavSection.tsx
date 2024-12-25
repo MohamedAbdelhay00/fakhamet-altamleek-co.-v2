@@ -1,11 +1,16 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const NavSection = ({ scrolled }: { scrolled: boolean }) => {
   const [activeSection, setActiveSection] = useState("#home");
-
+  const t = useTranslations("home.nav");
+  const navSections = t.raw("sectionLinks") as {
+    href: string;
+    label: string;
+  }[];
   // Section detection logic
   useEffect(() => {
     const handleScroll = () => {
@@ -31,25 +36,19 @@ const NavSection = ({ scrolled }: { scrolled: boolean }) => {
 
   return (
     <div className="hidden gap-8 sm:flex">
-      {[
-        { href: "#home", label: "Home" },
-        { href: "#about-us", label: "About Us" },
-        { href: "#projects", label: "Projects" },
-        { href: "#services", label: "Services" },
-        { href: "#reviews", label: "Reviews" },
-      ].map((link) => (
+      {navSections.map((navSection, index) => (
         <Link
-          key={link.href}
-          href={link.href}
+          key={index}
+          href={navSection.href}
           className={`mx-1 transition-colors hover:text-primary-500 dark:hover:text-primary-500 ${
-            activeSection === link.href
+            activeSection === navSection.href
               ? "font-extrabold text-primary-500 dark:text-primary-500"
               : scrolled
               ? "font-semibold text-dark-100 dark:text-light-500"
               : "font-semibold text-light-800 dark:text-light-500"
           }`}
         >
-          {link.label}
+          {navSection.label}
         </Link>
       ))}
     </div>

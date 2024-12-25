@@ -1,8 +1,15 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import React from "react";
 
+import { useLocale } from "@/context/LocaleContext";
+import { Button } from "../ui/button";
+
 const ContactUsSection = () => {
+  const t = useTranslations("home.cta");
+  const { routes } = useLocale();
   return (
     <section className="bg-light-700 px-6 py-16 dark:bg-dark-300 sm:px-12 md:px-24">
       <div className="relative overflow-hidden rounded-3xl bg-dark-400 p-10 text-center dark:bg-dark-200 sm:p-20">
@@ -29,21 +36,26 @@ const ContactUsSection = () => {
 
           {/* Title */}
           <h2 className="text-3xl font-extrabold leading-tight text-light-700 dark:text-light-800 sm:text-4xl">
-            Let’s Talk About Your Future Home
+            {t("title")}
           </h2>
 
           {/* Description */}
           <p className="max-w-2xl text-lg text-light-400 dark:text-light-500">
-            Reach out to us to explore the best real estate opportunities or to
-            discuss your specific needs. We’re here to guide you every step of
-            the way.
+            {t("subtitle")}
           </p>
 
           {/* CTA Button */}
-          <Link href="/contact-us">
-            <button className="rounded-full bg-primary px-6 py-3 font-semibold text-light-800 transition-all duration-300 hover:bg-[#D95F1D] hover:shadow-lg">
-              Contact Us ↗
-            </button>
+          <Link href={routes.contactUs}>
+            <Button className="rounded-full bg-primary px-8 py-4 font-semibold text-light-800 transition-all duration-300 hover:bg-[#D95F1D] hover:shadow-lg">
+              {t("button")}
+              <Image
+                src="/icons/arrow.svg"
+                width={20}
+                height={20}
+                alt="contact us"
+                className="invert"
+              />
+            </Button>
           </Link>
         </div>
       </div>

@@ -13,8 +13,10 @@ import {
 } from "@/components/ui/sheet";
 
 import NavLinks from "./NavLinks";
+import LanguageSwitch from "../LanguageSwitch";
+import ModeToggle from "../Theme";
 
-const MobileNav = () => {
+const MobileNav = ({ scrolled }: { scrolled: boolean }) => {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -23,7 +25,11 @@ const MobileNav = () => {
           width={30}
           height={30}
           alt="Menu"
-          className="invert-colors"
+          className={`${
+            scrolled && !document.documentElement.classList.contains("dark")
+              ? "invert"
+              : ""
+          }`}
         />
       </SheetTrigger>
       <SheetContent side="left" className="border-none">
@@ -39,6 +45,7 @@ const MobileNav = () => {
             <SheetClose asChild>
               <section className="flex h-full flex-col gap-6 pt-5">
                 <NavLinks isMobile />
+                <LanguageSwitch />
               </section>
             </SheetClose>
           </div>

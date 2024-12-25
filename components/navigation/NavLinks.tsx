@@ -2,27 +2,22 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useLocale } from "next-intl"; // Ensure you have next-intl integrated
 import React from "react";
 
 import { SheetClose } from "@/components/ui/sheet";
-import sidebarLinks from "@/constants";
+import sidebarLinks from "@/constants/index";
 import { cn } from "@/lib/utils";
 
 const NavLinks = ({ isMobile = false }: { isMobile: boolean }) => {
   const pathname = usePathname();
-  const userId = 1;
+  const locale = useLocale(); // Dynamically fetch the current locale
+  const links = sidebarLinks(locale);
 
   return (
     <>
-      {sidebarLinks.map((item) => {
-        const isActive =
-          (pathname.includes(item.route) && item.route.length > 1) ||
-          pathname === item.route;
-
-        if (item.route === "/profile") {
-          if (userId) item.route = `${item.route}/${userId}`;
-          else return null;
-        }
+      {links.map((item) => {
+        const isActive = pathname === item.route;
 
         const LinkComponent = (
           <Link

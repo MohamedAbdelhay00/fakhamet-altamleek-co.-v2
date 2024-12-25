@@ -4,27 +4,29 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
+import { useLocale } from "@/context/LocaleContext";
+import { useTranslations } from "next-intl";
+import { link } from "fs";
+
 const NavPages = () => {
   const pathname = usePathname();
+  const { locale } = useLocale();
+  const t = useTranslations("home.nav");
+  const pageLinks = t.raw("pageLinks") as { href: string; label: string }[];
 
   return (
     <div className="hidden gap-8 sm:flex">
-      {[
-        { href: "/", label: "Home" },
-        { href: "/about-us", label: "About Us" },
-        { href: "/projects", label: "Projects" },
-        { href: "/contact-us", label: "Contact Us" },
-      ].map((link) => (
+      {pageLinks.map((pageLink, index) => (
         <Link
-          key={link.href}
-          href={link.href}
+          key={index}
+          href={`/${locale}/${pageLink.href}`}
           className={`mx-1 transition-colors hover:text-primary-500 dark:hover:text-primary-500 ${
-            pathname === link.href
+            pathname === `/${locale}/${pageLink.href}`
               ? "font-extrabold text-primary-500 dark:text-primary-500"
               : "font-semibold text-dark-100 dark:text-light-500"
           }`}
         >
-          {link.label}
+          {pageLink.label}
         </Link>
       ))}
     </div>

@@ -1,0 +1,33 @@
+{
+  "projectDetails": {
+    "title": "مشاريعنا",
+    "subtitle": "استكشف أحدث مشاريعنا",
+    "button": "عرض التفاصيل",
+    "cards": [
+      {
+        "id": 1,
+        "title": "الفيحاء",
+        "description": "اختبر الأناقة في كل تفاصيل شققنا الفاخرة.",
+        "price": "500,000 ريال سعودي",
+        "image": "/images/p1.jpg",
+        "link": "al-fyhaa"
+      },
+      {
+        "id": 2,
+        "title": "الفيصلية",
+        "description": "مساحات معيشة حديثة مصممة للراحة الحضرية.",
+        "price": "800,000 ريال سعودي",
+        "image": "/images/p2.jpg",
+        "link": "al-fysaliah"
+      },
+      {
+        "id": 3,
+        "title": "الصفا",
+        "description": "تحلق إلى آفاق جديدة مع شققنا البرجية المعاصرة.",
+        "price": "700,000 ريال سعودي",
+        "image": "/images/outside-frontview.jpg",
+        "link": "al-safa"
+      }
+    ]
+  }
+}

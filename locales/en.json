@@ -1,0 +1,262 @@
+{
+  "home": {
+    "hero": {
+      "title": "Modern Living in the Heart of Jeddah",
+      "subtitle": "Explore our curated selection of apartments, designed for comfort and elegance.",
+      "buttons": {
+        "contactUs": "Contact Us",
+        "viewProjects": "View Projects"
+      }
+    },
+    "nav": {
+      "sectionLinks": [
+        { "href": "#home", "label": "Home" },
+        { "href": "#about-us", "label": "About Us" },
+        { "href": "#projects", "label": "Projects" },
+        { "href": "#services", "label": "Services" },
+        { "href": "#reviews", "label": "Reviews" }
+      ],
+      "pageLinks": [
+        { "href": "/", "label": "Home" },
+        { "href": "about-us", "label": "About Us" },
+        { "href": "projects", "label": "Projects" },
+        { "href": "contact-us", "label": "Contact Us" }
+      ]
+    },
+    "trustedAdvisors": {
+      "title": "Your Trusted Real Estate Advisors",
+      "subtitle": "A cutting-edge real estate agent that offers a seamless and immersive experience for finding your dream home in the heart of the city.",
+      "subtitle2": "We have witnessed the ever-evolving landscape of the real estate market and become a trusted partner by thousands of clients.",
+      "stats": {
+        "satisfiedCustomers": "17K+ Satisfied Customers",
+        "yearsOfExperience": "25+ Years of Experience",
+        "awards": "150+ Award Winning",
+        "properties": "25+ Collections of Property"
+      },
+      "seeMore": "See More"
+    },
+    "featuredProjects": {
+      "title": "Our Featured Projects",
+      "subtitle": "Discover our premium collection of apartments designed to match your lifestyle.",
+      "seeMore": "See More"
+    },
+    "services": {
+      "title": "Our Services",
+      "subtitle": "We offer a wide range of services to meet your needs, ensuring high quality and professional work at every stage."
+    },
+    "testimonials": {
+      "title": "Don't Trust Us, Trust Their Voice",
+      "subtitle": "Discover heartfelt accounts of joy and fulfillment as our valued clients embark on their quest for their dream homes and investments.",
+      "clients": [
+        {
+          "name": "Abdullah Al-Otaibi",
+          "review": "Choosing this real estate service was the best decision I ever made. Their team showcased exceptional professionalism and expertise. I highly recommend their services to anyone!"
+        },
+        {
+          "name": "Sara Al-Fayez",
+          "review": "Their expert negotiation skills helped me sell my property at a great price in no time. I will definitely recommend them to my friends."
+        },
+        {
+          "name": "Noura Al-Mutairi",
+          "review": "They patiently answered all our questions, gave wise insights, and helped us secure our dream home within our budget."
+        },
+        {
+          "name": "Fahad Al-Qahtani",
+          "review": "They presented us with a stunning selection of homes and offered in-depth knowledge of the local market that truly impressed us!"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Let's Talk About Your Future Home",
+      "subtitle": "Reach out to us to explore the best real estate opportunities or to discuss your specific needs. We're here to guide you every step of the way.",
+      "button": "Contact Us"
+    },
+    "footer": {
+      "company": "Fakhamet Altamleek Co.",
+      "description": "A cutting-edge real estate agent that offers a seamless and immersive experience for finding your dream home.",
+      "quickLinksTitle": "Quick Links",
+      "quickLinks": ["About Us", "Projects", "Services", "Testimonials"],
+      "contact": {
+        "contactus": "Contact Us",
+        "emailTitle": "Email",
+        "email": "info@fakhametaltamleek.com",
+        "phoneTitle": "Phone",
+        "phone": "+966 12 345 6789",
+        "addressTitle": "Address",
+        "address": "Jeddah, Saudi Arabia"
+      },
+      "subscribe": {
+        "title": "Subscribe",
+        "description": "Join our newsletter to get updates on our latest projects.",
+        "placeholder": "Enter your email",
+        "button": "Subscribe"
+      },
+      "copyright": "Fakhamet Altamleek Co. All rights reserved"
+    }
+  },
+  "contactUs": {
+    "title": "Get in Touch",
+    "subtitle": "We would love to hear from you! Use the form below or reach out through our contact details.",
+    "form": {
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Your Name ...",
+      "emailAddress": "Email Address",
+      "emailPlaceholder": "your@email.com",
+      "message": "Message",
+      "messagePlaceholder": "...Type your message here",
+      "button": "Send Message"
+    },
+    "details": {
+      "location": "Jeddah, Saudi Arabia",
+      "email": "info@company.com",
+      "phone": "+966-123-456-789"
+    }
+  },
+  "aboutUs": {
+    "title": "About Us",
+    "breadcrumb": "Home > About Us",
+    "sections": {
+      "whoWeAre": {
+        "title": "Who We Are",
+        "description": "At Fakhamet Altamleek Co., we redefine real estate by delivering exceptional value and service. Our mission is to help clients find their dream homes with ease and confidence.",
+        "button": "Learn More"
+      },
+      "visionMission": {
+        "vision": {
+          "title": "Our Vision",
+          "description": "To be the leading real estate company, known for its commitment to excellence and client satisfaction.",
+          "icon": "/icons/eye.svg"
+        },
+        "mission": {
+          "title": "Our Mission",
+          "description": "To revolutionize the real estate industry by delivering unparalleled service, quality, and innovation.",
+          "icon": "/icons/mission.svg"
+        }
+      },
+      "coreValues": {
+        "title": "Our Core Values",
+        "values": [
+          {
+            "title": "Integrity",
+            "description": "We uphold the highest standards of honesty and fairness.",
+            "icon": "/icons/quality.svg"
+          },
+          {
+            "title": "Innovation",
+            "description": "We bring creative solutions to the ever-changing market.",
+            "icon": "/icons/creativity.svg"
+          },
+          {
+            "title": "Excellence",
+            "description": "We strive for perfection in every project we undertake.",
+            "icon": "/icons/achievement.svg"
+          },
+          {
+            "title": "Commitment",
+            "description": "We are dedicated to meeting our clients' expectations.",
+            "icon": "/icons/loyalty.svg"
+          }
+        ]
+      },
+      "byTheNumbers": {
+        "title": "By the Numbers",
+        "numbers": [
+          {
+            "title": "Happy Clients",
+            "value": "10K+",
+            "icon": "/icons/users.svg"
+          },
+          {
+            "title": "Years of Experience",
+            "value": "25+",
+            "icon": "/icons/experience-.svg"
+          },
+          {
+            "title": "Cities Served",
+            "value": "15+",
+            "icon": "/icons/places.svg"
+          },
+          {
+            "title": "Properties Sold",
+            "value": "50K+",
+            "icon": "/icons/sale-sign.svg"
+          }
+        ]
+      },
+      "callToAction": {
+        "title": "Your Journey Starts Here",
+        "description": "Contact us to explore your dream home or next investment opportunity.",
+        "button": "Get in Touch"
+      }
+    }
+  },
+  "projects": {
+    "title": "Our Projects",
+    "subtitle": "Explore our curated selection of apartments, designed for comfort and elegance.",
+    "button": "Learn More",
+    "cards": [
+      {
+        "id": 1,
+        "title": "Al Fyhaa",
+        "description": "Experience elegance in every detail of our premium apartments.",
+        "price": "500,000 SAR",
+        "image": "/images/p1.jpg",
+        "link": "al-fyhaa"
+      },
+      {
+        "id": 2,
+        "title": "AL fysaliah",
+        "description": "Modern living spaces designed for urban comfort.",
+        "price": "800,000 SAR",
+        "image": "/images/p2.jpg",
+        "link": "al-fysaliah"
+      },
+      {
+        "id": 3,
+        "title": "Al Safa",
+        "description": "Soar to new heights with our contemporary tower apartments.",
+        "price": "$700,000",
+        "image": "/images/outside-frontview.jpg",
+        "link": "al-safa"
+      }
+    ]
+  },
+  "projectDetails": {
+    "title": "Apartment for sale in Garden Lakes with 1 Bedroom",
+    "subtitle": "in 6th of October City by Hyde Park",
+    "price": "500,000 SAR",
+    "size": "243 m²",
+    "baths": "3 Baths",
+    "beds": "8 Beds",
+    "floors": "2 Floors",
+    "description": "This stunning property boasts spacious interiors, breathtaking views, and premium amenities designed for luxurious living. Located in a prime location, it is perfect for families and professionals seeking a serene yet connected environment. Do not miss the chance to make this dream home yours.",
+    "details": {
+      "statusTitle": "Status",
+      "status": "For Sale",
+      "developerTitle": "Developer",
+      "developer": "Fakhamet Altamleek Co.",
+      "noOfPropertiesTitle": "No. of Properties",
+      "noOfProperties": "25",
+      "startingPriceTitle": "Starting Price",
+      "startingPrice": "500,000 SAR",
+      "areaTitle": "Area",
+      "area": "243 m²",
+      "naighbourhoodTitle": "Neighbourhood",
+      "neighbourhood": "Al Fayhaa District",
+      "servicesTitle": "Services",
+      "services": ["Driver Room", "Parking", "City View"]
+    },
+    "cta": "Contact Us",
+    "amenitiesTitle": "Amenities",
+    "amenities": ["Sea view", "Mountain view", "City view"],
+    "images": [
+      "/images/outside.jpg",
+      "/images/outside2.jpg",
+      "/images/apartment1.jpg",
+      "/images/apartment2.jpg",
+      "/images/apartment3.jpg",
+      "/images/apartment4.jpg",
+      "/images/apartment5.jpg"
+    ]
+  }
+}

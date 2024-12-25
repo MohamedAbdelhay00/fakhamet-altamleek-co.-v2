@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "title": "Renovation Services",
+    "description": "Once you decide to proceed with a renovation project, we offer a simple and convenient way to get in touch with us.",
+    "icon": "/icons/renovation.svg",
+    "color": "bg-primary",
+    "textColor": "text-light-700",
+    "iconBg": "bg-primary",
+    "hoverEffect": "hover:shadow-xl hover:bg-[#D95A1B]"
+  },
+  {
+    "id": 2,
+    "title": "Plumbing Services",
+    "description": "Our goal is not just to provide a quick fix but to address the underlying issue to prevent future problems.",
+    "icon": "/icons/plumbing.svg",
+    "color": "bg-snow dark:bg-dark-200",
+    "textColor": "text-dark-100 dark:text-light-700",
+    "iconBg": "bg-primary dark:bg-primary",
+    "hoverEffect": "hover:scale-105 hover:shadow-lg"
+  },
+  {
+    "id": 3,
+    "title": "Electrical Services",
+    "description": "We will discuss any available options, provide accurate cost estimates, and answer any questions you may have.",
+    "icon": "/icons/electrical.svg",
+    "color": "bg-light-700 dark:bg-dark-200",
+    "textColor": "text-dark-100 dark:text-light-700",
+    "iconBg": "bg-primary dark:bg-primary",
+    "hoverEffect": "hover:scale-105 hover:shadow-lg"
+  },
+  {
+    "id": 4,
+    "title": "Painting & Drywall",
+    "description": "We will listen to your concerns, conduct thorough inspections, and identify any areas that may require attention.",
+    "icon": "/icons/painting.svg",
+    "color": "bg-light-700 dark:bg-dark-200",
+    "textColor": "text-dark-100 dark:text-light-700",
+    "iconBg": "bg-primary dark:bg-primary",
+    "hoverEffect": "hover:scale-105 hover:shadow-lg"
+  },
+  {
+    "id": 5,
+    "title": "Wood & Flooring",
+    "description": "We will provide you with a detailed explanation of the recommended wood or flooring services.",
+    "icon": "/icons/flooring.svg",
+    "color": "bg-light-700 dark:bg-dark-200",
+    "textColor": "text-dark-100 dark:text-light-700",
+    "iconBg": "bg-primary dark:bg-primary",
+    "hoverEffect": "hover:scale-105 hover:shadow-lg"
+  }
+]

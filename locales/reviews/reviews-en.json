@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Abdullah Al-Otaibi",
+    "feedback": "Choosing this real estate service was the best decision I ever made. Their team demonstrated exceptional professionalism and expertise. I highly recommend their services to anyone!",
+    "avatar": "/images/c1.jpg",
+    "rating": 5
+  },
+  {
+    "id": 2,
+    "name": "Sara Al-Fayez",
+    "feedback": "Their expert negotiation skills helped me sell my property at a great price in no time. I would definitely work with them again.",
+    "avatar": "/images/c2.jpg",
+    "rating": 5
+  },
+  {
+    "id": 3,
+    "name": "Noura Al-Mutairi",
+    "feedback": "They patiently answered all our questions, provided valuable insights, and helped us secure our dream home within our budget.",
+    "avatar": "/images/c4.jpg",
+    "rating": 5
+  },
+  {
+    "id": 4,
+    "name": "Fahad Al-Qahtani",
+    "feedback": "They presented us with a stunning selection of homes that perfectly matched our preferences. The team's attention to detail and in-depth knowledge of the local market truly impressed us!",
+    "avatar": "/images/c3.jpg",
+    "rating": 5
+  }
+]
