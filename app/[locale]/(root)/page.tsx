@@ -1,11 +1,11 @@
 import React from "react";
 
 import AboutUs from "@/components/home/AboutUs";
+import ContactUs from "@/components/home/ContactUs";
 import Hero from "@/components/home/Hero";
 import Projects from "@/components/home/Projects";
-import Services from "@/components/home/Services";
 import Reviews from "@/components/home/Reviews";
-import ContactUs from "@/components/home/ContactUs";
+import Services from "@/components/home/Services";
 
 const Home = () => {
   return (

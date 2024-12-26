@@ -14,7 +14,6 @@ import {
 
 import NavLinks from "./NavLinks";
 import LanguageSwitch from "../LanguageSwitch";
-import ModeToggle from "../Theme";
 
 const MobileNav = ({ scrolled }: { scrolled: boolean }) => {
   return (
@@ -45,7 +44,7 @@ const MobileNav = ({ scrolled }: { scrolled: boolean }) => {
             <SheetClose asChild>
               <section className="flex h-full flex-col gap-6 pt-5">
                 <NavLinks isMobile />
-                <LanguageSwitch />
+                <LanguageSwitch scrolled />
               </section>
             </SheetClose>
           </div>

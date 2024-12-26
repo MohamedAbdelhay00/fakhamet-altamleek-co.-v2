@@ -40,7 +40,9 @@ export default function LanguageSwitch({ scrolled }: { scrolled: boolean }) {
       </Button>
       <p
         className={`hidden cursor-pointer font-bold sm:block ${
-          scrolled ? "text-dark-100 dark:text-light-800" : "text-light-800"
+          scrolled || pathname !== `/${locale}`
+            ? "text-dark-100 dark:text-light-800"
+            : "text-light-800"
         } hover:text-primary-500`}
         onClick={() => handleLocaleSwitch(locale === "en" ? "ar" : "en")}
       >

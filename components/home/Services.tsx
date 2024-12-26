@@ -77,7 +77,7 @@ const Services = () => {
               className={`mt-4 text-sm ${
                 service.textColor === "text-light-700"
                   ? "text-light-700/90"
-                  : "text-light-/70 dark:text-light-500"
+                  : "text-light-700 dark:text-light-500"
               }`}
             >
               {service.description}

@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import React from "react";
 
 import { useLocale } from "@/context/LocaleContext";
+
 import { Button } from "../ui/button";
 
 const ContactUsSection = () => {

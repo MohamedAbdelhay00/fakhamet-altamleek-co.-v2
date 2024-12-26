@@ -138,7 +138,7 @@ html {
 }
 
 .h1-bold {
-  @apply text-[48px] font-poppins font-bold leading-[42px] leading-normal;
+  @apply text-[48px] font-poppins font-bold leading-normal;
 }
 
 .no-scrollbar {

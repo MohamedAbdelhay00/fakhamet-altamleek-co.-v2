@@ -1,7 +1,10 @@
 "use client";
 import { createContext, useContext } from "react";
 
-const LocaleContext = createContext<{ locale: string; routes: any }>({
+const LocaleContext = createContext<{
+  locale: string;
+  routes: Record<string, string>;
+}>({
   locale: "en",
   routes: {},
 });
@@ -13,7 +16,7 @@ export const LocaleProvider = ({
 }: {
   children: React.ReactNode;
   locale: string;
-  routes: any;
+  routes: Record<string, string>;
 }) => {
   return (
     <LocaleContext.Provider value={{ locale, routes }}>

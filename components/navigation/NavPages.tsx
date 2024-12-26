@@ -2,11 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import React from "react";
 
 import { useLocale } from "@/context/LocaleContext";
-import { useTranslations } from "next-intl";
-import { link } from "fs";
 
 const NavPages = () => {
   const pathname = usePathname();

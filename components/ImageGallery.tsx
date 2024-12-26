@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React, { useState } from "react";
 
 const ImageGallery = ({ images }: { images: string[] }) => {
@@ -21,7 +22,9 @@ const ImageGallery = ({ images }: { images: string[] }) => {
             maxWidth: activeIndex === index ? "1000px" : "100px",
           }}
         >
-          <img
+          <Image
+            layout="fill"
+            objectFit="cover"
             src={image}
             alt={`Image ${index + 1}`}
             className="size-full rounded-none object-cover"

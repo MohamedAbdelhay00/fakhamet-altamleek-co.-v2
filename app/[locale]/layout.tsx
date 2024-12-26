@@ -83,7 +83,7 @@ export default async function RootLayout({
   let messages;
   try {
     messages = (await import(`../../locales/${locale}.json`)).default;
-  } catch (error) {
+  } catch {
     notFound();
   }
   const routes = ROUTES(locale);

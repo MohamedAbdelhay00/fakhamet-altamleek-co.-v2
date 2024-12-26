@@ -1,5 +1,6 @@
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { useTranslations } from "next-intl";
+
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 
 const TableC = () => {
   const t = useTranslations("projectDetails.details");

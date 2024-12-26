@@ -46,7 +46,7 @@ const ProjectInfo = ({
           <span key={index}>{amenity}</span>
         ))}
       </div>
-      <p className="description">{description}</p>
+      <p>{description}</p>
     </div>
   );
 };

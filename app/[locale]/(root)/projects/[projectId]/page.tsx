@@ -23,7 +23,6 @@ const ProjectDetails = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const amenities = t.raw("amenities") as string[];
   const images = t.raw("images") as string[];
 
   return (
