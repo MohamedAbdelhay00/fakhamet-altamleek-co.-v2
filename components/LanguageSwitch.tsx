@@ -27,9 +27,6 @@ export default function LanguageSwitch({ scrolled }: { scrolled: boolean }) {
         variant="ghost"
         className="flex justify-between gap-2 sm:hidden"
       >
-        <span>
-          {locale === "en" ? <span>English</span> : <span>العربية</span>}
-        </span>
         <Image
           src="/icons/language.svg"
           width={20}
@@ -37,16 +34,21 @@ export default function LanguageSwitch({ scrolled }: { scrolled: boolean }) {
           alt="language icon"
           className="dark:invert"
         />
+        <span className={`${locale === "ar" ? "font-poppins" : "font-cairo"}`}>
+          {locale === "en" ? <span>العربية</span> : <span>English</span>}
+        </span>
       </Button>
       <p
         className={`hidden cursor-pointer font-bold sm:block ${
           scrolled || pathname !== `/${locale}`
             ? "text-dark-100 dark:text-light-800"
             : "text-light-800"
-        } hover:text-primary-500`}
+        } hover:text-primary-500 dark:hover:text-primary-500 ${
+          locale === "ar" ? "font-poppins" : "font-cairo"
+        }`}
         onClick={() => handleLocaleSwitch(locale === "en" ? "ar" : "en")}
       >
-        {locale === "en" ? "English" : "العربية"}
+        {locale === "en" ? "العربية" : "English"}
       </p>
     </>
   );

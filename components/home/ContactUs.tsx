@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { useTheme } from "next-themes";
 import React from "react";
 
 import { useLocale } from "@/context/LocaleContext";
@@ -11,6 +12,7 @@ import { Button } from "../ui/button";
 const ContactUsSection = () => {
   const t = useTranslations("home.cta");
   const { routes } = useLocale();
+  const theme = useTheme();
   return (
     <section className="bg-light-700 px-6 py-16 dark:bg-dark-300 sm:px-12 md:px-24">
       <div className="relative overflow-hidden rounded-3xl bg-dark-400 p-10 text-center dark:bg-dark-200 sm:p-20">
@@ -54,7 +56,7 @@ const ContactUsSection = () => {
                 width={20}
                 height={20}
                 alt="contact us"
-                className="invert"
+                className={theme.resolvedTheme === "dark" ? "" : "invert"}
               />
             </Button>
           </Link>

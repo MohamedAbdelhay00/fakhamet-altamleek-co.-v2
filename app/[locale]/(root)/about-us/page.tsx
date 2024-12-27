@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { useTheme } from "next-themes";
 import React from "react";
 
 import { Button } from "@/components/ui/button";
@@ -11,6 +12,7 @@ import { useLocale } from "@/context/LocaleContext";
 export default function AboutUs() {
   const t = useTranslations("aboutUs");
   const { locale } = useLocale();
+  const theme = useTheme();
   const visionMission = t.raw("sections.visionMission") as {
     vision: { title: string; description: string; icon: string };
     mission: { title: string; description: string; icon: string };
@@ -66,7 +68,7 @@ export default function AboutUs() {
                   width={20}
                   height={20}
                   alt="see more"
-                  className="invert"
+                  className={theme.resolvedTheme === "dark" ? "" : "invert"}
                 />
               </Button>
             </Link>
@@ -172,7 +174,7 @@ export default function AboutUs() {
             {t("sections.callToAction.description")}
           </p>
           <Link href={`/${locale}/contact-us`}>
-            <Button className="mt-8 rounded-lg bg-white px-10 py-5 font-bold text-primary hover:text-primary hover:bg-primary-foreground hover:scale-105">
+            <Button className="mt-8 rounded-lg bg-white px-10 py-5 font-bold text-primary hover:scale-105 hover:bg-primary-foreground hover:text-primary">
               {t("sections.callToAction.button")}
             </Button>
           </Link>

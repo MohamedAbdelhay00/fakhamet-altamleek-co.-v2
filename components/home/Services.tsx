@@ -38,7 +38,7 @@ const Services = () => {
   }, [locale]);
 
   return (
-    <section className="bg-light-800 px-6 py-16 dark:bg-dark-300 sm:px-12 md:px-24">
+    <section className="bg-light-700 px-6 py-16 dark:bg-dark-300 sm:px-12 md:px-24">
       <div className="mb-12 text-center">
         <h2 className="text-3xl font-bold text-dark-100 dark:text-light-700">
           {t("services.title")}
@@ -75,8 +75,8 @@ const Services = () => {
             {/* Description */}
             <p
               className={`mt-4 text-sm ${
-                service.textColor === "text-light-700"
-                  ? "text-light-700/90"
+                service.id !== 1
+                  ? "text-light-400"
                   : "text-light-700 dark:text-light-500"
               }`}
             >

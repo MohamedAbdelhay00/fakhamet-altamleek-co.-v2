@@ -58,11 +58,6 @@ const openSans = localFont({
   variable: "--font-open-sans",
   weight: "400 700",
 });
-const cairo = localFont({
-  src: "../fonts/Cairo/Cairo-VariableFont_slnt,wght.ttf",
-  variable: "--font-cairo",
-  weight: "400 700",
-});
 
 export const metadata: Metadata = {
   title: "Fakhamet Al Tamleek Co. | Premium Real Estate Solutions",
@@ -93,9 +88,13 @@ export default async function RootLayout({
       lang={locale}
       dir={locale === "ar" ? "rtl" : "ltr"}
     >
-      <body
-        className={`${poppins.variable} ${openSans.variable} ${cairo.variable} antialiased`}
-      >
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className={`${poppins.variable} ${openSans.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

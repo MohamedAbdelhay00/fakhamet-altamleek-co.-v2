@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 import MobileGallery from "@/components/gallery/MobileGallery";
@@ -15,6 +16,7 @@ const ProjectDetails = () => {
   const t = useTranslations("projectDetails");
   const [isMobile, setIsMobile] = useState(false);
   const { locale } = useLocale();
+  const theme = useTheme();
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -74,7 +76,7 @@ const ProjectDetails = () => {
               width={20}
               height={20}
               alt="see more"
-              className="invert"
+              className={theme.resolvedTheme === "dark" ? "" : "invert"}
             />
           </Button>
         </Link>

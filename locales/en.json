@@ -6,7 +6,8 @@
       "buttons": {
         "contactUs": "Contact Us",
         "viewProjects": "View Projects"
-      }
+      },
+      "scrollDown": "Scroll Down"
     },
     "nav": {
       "sectionLinks": [
@@ -21,7 +22,9 @@
         { "href": "about-us", "label": "About Us" },
         { "href": "projects", "label": "Projects" },
         { "href": "contact-us", "label": "Contact Us" }
-      ]
+      ],
+      "company-p1": "Fakhamet",
+      "company-p2": "Al Tamleek"
     },
     "trustedAdvisors": {
       "title": "Your Trusted Real Estate Advisors",

@@ -29,9 +29,9 @@ const Navbar = () => {
 
   return (
     <div
-      className={`fixed left-0 top-0 z-50 flex w-full items-center justify-between px-6 py-3 transition-all duration-300 sm:px-24 ${
+      className={` fixed left-0 top-0 z-50 flex w-full items-center justify-between px-6 py-3 transition-all duration-300 sm:px-24 ${
         scrolled || pathname !== `/${locale}`
-          ? "border-b bg-light-700 shadow-none backdrop-blur-md dark:bg-dark-300"
+          ? "border-b bg-light-700 shadow-none backdrop-blur-md dark:border-b-black dark:bg-dark-300"
           : "bg-transparent"
       }`}
     >

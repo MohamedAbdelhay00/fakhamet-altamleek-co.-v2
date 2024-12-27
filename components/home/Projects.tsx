@@ -38,7 +38,7 @@ const Projects = () => {
   }, [locale]);
 
   return (
-    <section className="bg-light-700 px-6 py-16 dark:bg-dark-300 sm:px-12 md:px-24">
+    <section className="bg-light-800 px-6 py-16 dark:bg-dark-100 sm:px-12 md:px-24">
       <div className="mb-12 text-center">
         <h2 className="text-3xl font-bold text-dark-100 dark:text-light-700">
           {t("title")}

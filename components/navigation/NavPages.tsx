@@ -22,7 +22,7 @@ const NavPages = () => {
           className={`mx-1 transition-colors hover:text-primary-500 dark:hover:text-primary-500 ${
             pathname === `/${locale}/${pageLink.href}`
               ? "font-extrabold text-primary-500 dark:text-primary-500"
-              : "font-semibold text-dark-100 dark:text-light-500"
+              : "font-bold text-dark-100 dark:text-light-500"
           }`}
         >
           {pageLink.label}

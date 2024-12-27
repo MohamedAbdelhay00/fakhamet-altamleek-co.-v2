@@ -1,77 +1,3 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities;
-@layer base {
-  :root {
-    --radius: 0.5rem;
-  }
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-.h1-bold {
-  @apply text-[48px] font-poppins font-bold leading-[42px] leading-normal;
-}
-
-.no-scrollbar {
-  -ms-overflow-style: none; 
-  scrollbar-width: none;
-}
-
-.active-theme {
-  filter: invert(53%) sepia(98%) saturate(3332%) hue-rotate(0deg)
-    brightness(104%) contrast(106%) !important;
-}
-
-.invert-colors {
-  @apply invert dark:invert-0;
-}
-.image-gallery {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.project-info {
-  margin: 2rem 0;
-}
-
-.project-info h1 {
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.project-info .amenities {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-.contact-section {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.call-button,
-.whatsapp-button {
-  padding: 1rem 2rem;
-  color: white;
-  text-align: center;
-  font-weight: bold;
-  border-radius: 0.5rem;
-}
-
-.call-button {
-  background-color: #f36f21;
-}
-
-.whatsapp-button {
-  background-color: #25d366;
-}
- */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -90,8 +16,8 @@ html {
 
   /* Arabic styles */
   [lang="ar"] {
-    --font-heading-ar: "Cairo", serif;
-    --font-body-ar: "Cairo", serif;
+    --font-heading-ar: "Cairo", sans-serif;
+    --font-body-ar: "Cairo", sans-serif;
   }
 
   /* Headings (H1-H6) */
@@ -112,7 +38,8 @@ html {
   [lang="ar"] h5,
   [lang="ar"] h6 {
     font-family: var(--font-heading-ar);
-    font-style: normal !important; /* Ensure normal font style */
+    font-weight: 700; /* Ensure bold font weight */
+    font-style: normal; /* Ensure normal font style */
   }
 
   /* Paragraphs, buttons, and general body text */
@@ -129,7 +56,7 @@ html {
   [lang="ar"] button,
   [lang="ar"] a {
     font-family: var(--font-body-ar);
-    font-style: normal !important; /* Ensure normal font style */
+    font-style: normal; /* Ensure normal font style */
   }
 }
 

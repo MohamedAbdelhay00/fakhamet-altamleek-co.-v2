@@ -44,8 +44,8 @@ const NavSection = ({ scrolled }: { scrolled: boolean }) => {
             activeSection === navSection.href
               ? "font-extrabold text-primary-500 dark:text-primary-500"
               : scrolled
-              ? "font-semibold text-dark-100 dark:text-light-500"
-              : "font-semibold text-light-800 dark:text-light-500"
+              ? "font-bold text-dark-100 dark:text-light-500"
+              : "font-bold text-light-800 dark:text-light-500"
           }`}
         >
           {navSection.label}
