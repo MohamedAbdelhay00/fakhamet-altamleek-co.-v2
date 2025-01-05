@@ -1,7 +1,20 @@
+"use client";
+
 import React from "react";
 
-const signin = () => {
-  return <div>signin</div>;
+import AuthForm from "@/components/AuthForm";
+import { signInWithCredentials } from "@/lib/actions/auth.action";
+import { SignInSchema } from "@/lib/validations";
+
+const SignIn = () => {
+  return (
+    <AuthForm
+      formType="SIGN_IN"
+      schema={SignInSchema}
+      defaultValues={{ email: "", password: "" }}
+      onSubmit={signInWithCredentials}
+    />
+  );
 };
 
-export default signin;
+export default SignIn;

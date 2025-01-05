@@ -60,7 +60,7 @@ const Footer = () => {
             </a>
           </p>
           <p className="text-light-400 dark:text-light-500">
-            {t("contact.phoneTitle")}: +966 123 456 789
+            {t("contact.phoneTitle")}: +966544934745
           </p>
           <p className="text-light-400 dark:text-light-500">
             {t("contact.addressTitle")}: {t("contact.address")}

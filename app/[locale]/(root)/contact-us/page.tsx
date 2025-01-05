@@ -97,7 +97,7 @@ export default function ContactUs() {
                 <Mail size={20} className="text-light-700" />
               </div>
               <p className="text-dark-300 dark:text-light-500">
-                info@company.com
+                info@fakhametaltamleek.com
               </p>
             </div>
             <div className="flex items-center space-x-3">
@@ -109,7 +109,7 @@ export default function ContactUs() {
                 <Phone size={20} className="text-light-700" />
               </div>
               <p className="text-dark-300 dark:text-light-500">
-                +966-123-456-789
+                +966 544 934 745
               </p>
             </div>
           </div>

@@ -9,26 +9,31 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { useLocale } from "@/context/LocaleContext";
 
+type VisionMissionType = {
+  vision: { title: string; description: string; icon: string };
+  mission: { title: string; description: string; icon: string };
+};
+
+type CoreValueType = {
+  title: string;
+  description: string;
+  icon: string;
+};
+
+type MilestoneType = {
+  title: string;
+  value: string;
+  icon: string;
+};
+
 export default function AboutUs() {
   const t = useTranslations("aboutUs");
   const { locale } = useLocale();
   const theme = useTheme();
-  const visionMission = t.raw("sections.visionMission") as {
-    vision: { title: string; description: string; icon: string };
-    mission: { title: string; description: string; icon: string };
-  };
 
-  const coreValues = t.raw("sections.coreValues.values") as {
-    title: string;
-    description: string;
-    icon: string;
-  }[];
-
-  const milestones = t.raw("sections.byTheNumbers.numbers") as {
-    title: string;
-    value: string;
-    icon: string;
-  }[];
+  const visionMission = t.raw("sections.visionMission") as VisionMissionType;
+  const coreValues = t.raw("sections.coreValues.values") as CoreValueType[];
+  const milestones = t.raw("sections.byTheNumbers.numbers") as MilestoneType[];
 
   return (
     <div>

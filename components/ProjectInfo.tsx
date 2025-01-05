@@ -1,5 +1,3 @@
-// src/components/ProjectInfo.tsx
-
 import React from "react";
 
 interface ProjectDetailsProps {

@@ -17,7 +17,6 @@ const Navbar = () => {
   const pathname = usePathname();
   const { locale } = useLocale();
 
-  // Detect scrolling for navbar background
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -35,7 +34,6 @@ const Navbar = () => {
           : "bg-transparent"
       }`}
     >
-      {/* Logo */}
       <Link href="/">
         <div
           className={`size-12 rounded-lg bg-contain bg-no-repeat ${
@@ -46,14 +44,12 @@ const Navbar = () => {
         ></div>
       </Link>
 
-      {/* Conditional Navbar Rendering */}
       {pathname === `/${locale}` ? (
         <NavSection scrolled={scrolled} />
       ) : (
         <NavPages />
       )}
 
-      {/* Mode Toggle and MobileNav */}
       <div className="flex items-center gap-4">
         <ModeToggle />
         <div className="hidden items-center gap-4 sm:flex">

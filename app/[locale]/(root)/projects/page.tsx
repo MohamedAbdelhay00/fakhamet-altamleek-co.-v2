@@ -3,9 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-
 import { Button } from "@/components/ui/button";
 import { useLocale } from "@/context/LocaleContext";
+import axios from "axios";
+import ClipLoader from "react-spinners/ClipLoader"; // Import the spinner component
 
 const Projects = () => {
   type Project = {
@@ -27,22 +28,55 @@ const Projects = () => {
   const [projectDetails, setProjectDetails] = useState<ProjectDetails | null>(
     null
   );
+  const [loading, setLoading] = useState(true); // Add loading state
   const { locale, routes } = useLocale();
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await import(
+        // Fetch locales data
+        const localesResponse = await import(
           `@/locales/projects/projects-${locale}.json`
         );
-        setProjectDetails(response.default.projectDetails);
+        const localesData = localesResponse.default.projectDetails;
+
+        // Fetch projects from the database
+        const apiResponse = await axios.get("/api/projects"); // Replace with your actual API endpoint
+        const projectsFromDb = apiResponse.data.data.map((project: any) => ({
+          id: project._id,
+          title:
+            locale === "ar" ? project.data.ar.title : project.data.en.title,
+          description:
+            locale === "ar"
+              ? project.data.ar.description
+              : project.data.en.description,
+          price: `${project.startingPrice} SAR`,
+          image: project.coverImage,
+          link: project._id, // Use the project ID or a specific link
+        }));
+
+        // Combine locale data with the projects data
+        setProjectDetails({
+          ...localesData,
+          cards: projectsFromDb,
+        });
       } catch (error) {
         console.error("Error loading projects:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchProjects();
   }, [locale]);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <ClipLoader size={50} color={"#123abc"} loading={loading} />
+      </div>
+    );
+  }
 
   if (!projectDetails) {
     return <div>Loading...</div>;

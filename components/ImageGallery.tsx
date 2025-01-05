@@ -1,9 +1,19 @@
 "use client";
+
 import Image from "next/image";
 import React, { useState } from "react";
 
-const ImageGallery = ({ images }: { images: string[] }) => {
+const ImageGallery = ({ images }: { images: string[] | undefined }) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
+
+  // Ensure images is an array
+  if (!images || !Array.isArray(images) || images.length === 0) {
+    return (
+      <div className="flex h-[500px] w-full items-center justify-center overflow-hidden rounded-lg">
+        <p>No images available</p>
+      </div>
+    );
+  }
 
   return (
     <div className="flex h-[500px] w-full gap-4 overflow-hidden rounded-lg">
