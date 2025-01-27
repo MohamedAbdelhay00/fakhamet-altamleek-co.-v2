@@ -1,12 +1,20 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Spinner from "@/components/Spinner";
+
 import EmptyState from "@/components/EmptyState";
 import Header from "@/components/Header";
+import Spinner from "@/components/Spinner";
+
+type Admin = {
+  id: number;
+  name: string;
+  email: string;
+  active: boolean;
+};
 
 const ManageAdmin = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [admins, setAdmins] = useState<any[]>([]);
+  const [admins, setAdmins] = useState<Admin[]>([]);
 
   useEffect(() => {
     // Simulating API call
@@ -28,7 +36,7 @@ const ManageAdmin = () => {
   };
 
   return (
-    <div className="p-6 bg-light-900 dark:bg-dark-900 h-full w-full">
+    <div className="size-full bg-light-800 p-6 dark:bg-dark-500">
       {/* Header */}
       <Header
         title="Manage Admins"
@@ -37,7 +45,7 @@ const ManageAdmin = () => {
         buttonHref="/dashboard/admin/add"
       />
 
-      <div className="mt-6 border border-gray-300 dark:border-gray-700 rounded-lg p-4">
+      <div className="mt-6 rounded-lg border border-gray-300 p-4 dark:border-gray-700">
         {isLoading ? (
           <Spinner />
         ) : admins.length > 0 ? (
@@ -59,15 +67,15 @@ const ManageAdmin = () => {
                     <span
                       className={`${
                         admin.active
-                          ? "text-green-600 bg-green-100"
-                          : "text-red-600 bg-red-100"
-                      } px-2 py-1 rounded-md text-sm`}
+                          ? "bg-green-100 text-green-600"
+                          : "bg-red-100 text-red-600"
+                      } rounded-md px-2 py-1 text-sm`}
                     >
                       {admin.active ? "Active" : "Inactive"}
                     </span>
                   </td>
                   <td className="p-4">
-                    <label className="flex items-center gap-2 cursor-pointer">
+                    <label className="flex cursor-pointer items-center gap-2">
                       <input
                         type="checkbox"
                         checked={admin.active}
@@ -75,12 +83,12 @@ const ManageAdmin = () => {
                         className="hidden"
                       />
                       <span
-                        className={`w-10 h-5 flex items-center bg-gray-300 rounded-full p-1 transition ${
+                        className={`flex h-5 w-10 items-center rounded-full bg-gray-300 p-1 transition ${
                           admin.active ? "bg-green-500" : "bg-red-500"
                         }`}
                       >
                         <span
-                          className={`w-4 h-4 bg-white rounded-full shadow transform transition ${
+                          className={`size-4 rounded-full bg-white shadow transition${
                             admin.active ? "translate-x-5" : ""
                           }`}
                         />

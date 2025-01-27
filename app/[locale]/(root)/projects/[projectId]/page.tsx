@@ -1,18 +1,18 @@
 "use client";
 
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { useRouter, useParams } from "next/navigation";
 
 import MobileGallery from "@/components/gallery/MobileGallery";
 import ImageGallery from "@/components/ImageGallery";
 import TableC from "@/components/TableC";
 import { Button } from "@/components/ui/button";
 import { useLocale } from "@/context/LocaleContext";
-import axios from "axios";
 
 interface Project {
   id: string;
@@ -21,8 +21,10 @@ interface Project {
   area: number;
   developer: string;
   data: {
-    neighborhood: string;
-    services: string[];
+    [key: string]: {
+      neighborhood: string;
+      services: string[];
+    };
   };
   baths: number;
   rooms: number;
@@ -52,8 +54,11 @@ const ProjectDetails = () => {
     const fetchProject = async () => {
       try {
         const response = await axios.get(`/api/projects/${projectId}`);
+
         setProjectData(response.data.data); // Fetch project data dynamically
+        console.log(response.data.data);
       } catch (err) {
+        console.error(err);
         setError("Failed to load project data.");
       } finally {
         setLoading(false);
@@ -65,7 +70,7 @@ const ProjectDetails = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex min-h-screen items-center justify-center">
         <p>Loading...</p>
       </div>
     );
@@ -73,7 +78,7 @@ const ProjectDetails = () => {
 
   if (error) {
     return (
-      <div className="flex justify-center items-center min-h-screen text-red-500">
+      <div className="flex min-h-screen items-center justify-center text-red-500">
         <p>{error}</p>
       </div>
     );
@@ -81,7 +86,7 @@ const ProjectDetails = () => {
 
   if (!projectData) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex min-h-screen items-center justify-center">
         <p>No project data found.</p>
       </div>
     );
@@ -136,12 +141,12 @@ const ProjectDetails = () => {
           <div className="my-10">
             <TableC
               projectDetails={{
-                area: area,
-                startingPrice: startingPrice,
-                developer: developer,
-                neighborhood: data.neighborhood,
+                area,
+                startingPrice,
+                developer,
+                neighborhood: data[locale].neighborhood,
                 numberOfProperties: 10,
-                services: data.services,
+                services: data[locale].services,
                 status,
               }}
             />

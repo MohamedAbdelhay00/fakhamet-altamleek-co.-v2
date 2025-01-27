@@ -40,7 +40,7 @@ export default function AboutUs() {
       {/* Hero Section */}
       <div
         className="relative h-[60vh] bg-cover"
-        style={{ backgroundImage: "url('/images/about-us copy.jpg')" }}
+        style={{ backgroundImage: "url('/images/about-us2.JPG')" }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/40"></div>
         <div className="relative flex h-full items-center justify-center text-center">

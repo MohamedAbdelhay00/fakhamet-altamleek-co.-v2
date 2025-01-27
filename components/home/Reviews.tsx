@@ -4,14 +4,8 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import React, { useEffect, useState } from "react";
 
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import { useLocale } from "@/context/LocaleContext";
+
 import MobileCarousel from "../MobileCarousel";
 
 type Review = {

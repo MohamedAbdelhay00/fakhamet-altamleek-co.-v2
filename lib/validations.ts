@@ -2,47 +2,50 @@ import { z } from "zod";
 
 // Localized Data Schema
 export const LocalizedDataSchema = z.object({
-  title: z.string().min(1, "Title is required").nonempty(),
-  description: z.string().min(1, "Description is required").nonempty(),
+  title: z.string().min(1, "Title is required"),
+  description: z.string().optional(),
   neighborhood: z.string().optional(),
   services: z.array(z.string()).default([]).optional(),
 });
 
 // Project Schema
-export const ProjectSchema = z.object({
-  data: z.object({
-    en: LocalizedDataSchema,
-    ar: LocalizedDataSchema,
-  }),
-  startingPrice: z
-    .number()
-    .nonnegative("Starting price must be a non-negative number")
-    .min(1, "Starting price must be at least 1"),
-  area: z
-    .number()
-    .nonnegative("Area must be a non-negative number")
-    .min(1, "Area must be at least 1 square meter"),
-  rooms: z
-    .number()
-    .nonnegative("Rooms must be a non-negative number")
-    .min(1, "A project must have at least 1 room"),
-  baths: z
-    .number()
-    .nonnegative("Baths must be a non-negative number")
-    .min(1, "A project must have at least 1 bath"),
-  floors: z
-    .number()
-    .nonnegative("Floors must be a non-negative number")
-    .min(1, "A project must have at least 1 floor"),
-  status: z.enum(["ongoing", "completed"]).default("ongoing"),
-  developer: z.string().min(1, "Developer is required").nonempty(),
-  numberOfProperties: z
-    .number()
-    .nonnegative("Number of properties must be a non-negative number")
-    .min(1, "A project must have at least 1 property"),
-  images: z.array(z.string()).default([]).optional(),
-  coverImage: z.string().min(1, "Cover image is required").nonempty(),
-});
+export const ProjectSchema = z
+  .object({
+    data: z.object({
+      en: LocalizedDataSchema,
+      ar: LocalizedDataSchema,
+    }),
+    startingPrice: z
+      .number()
+      .nonnegative("Starting price must be a non-negative number")
+      .min(1, "Starting price must be at least 1")
+      .max(1_000_000, "Starting price cannot exceed 1,000,000"),
+    area: z
+      .number()
+      .nonnegative("Area must be a non-negative number")
+      .min(1, "Area must be at least 1 square meter"),
+    rooms: z
+      .number()
+      .nonnegative("Rooms must be a non-negative number")
+      .min(1, "A project must have at least 1 room"),
+    baths: z
+      .number()
+      .nonnegative("Baths must be a non-negative number")
+      .min(1, "A project must have at least 1 bath"),
+    floors: z
+      .number()
+      .nonnegative("Floors must be a non-negative number")
+      .min(1, "A project must have at least 1 floor"),
+    status: z.enum(["ongoing", "completed"]).default("ongoing"),
+    developer: z.string().min(1, "Developer is required"),
+    numberOfProperties: z
+      .number()
+      .nonnegative("Number of properties must be a non-negative number")
+      .min(1, "A project must have at least 1 property"),
+    images: z.array(z.string()).optional(),
+    coverImage: z.string().optional(),
+  })
+  .strict("Unexpected fields are not allowed");
 
 export const SignInSchema = z.object({
   email: z

@@ -1,19 +1,31 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { useTheme } from "next-themes";
 import axios from "axios";
-import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import Link from "next/link";
+import React, { useEffect, useState } from "react";
+import { Pie } from "react-chartjs-2";
+
+import { Button } from "@/components/ui/button";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DashboardHome = () => {
-  const { resolvedTheme } = useTheme();
+  interface DashboardData {
+    totalProjects: number;
+    soldProperties: number;
+    leads: number;
+    revenue: number;
+    projectStatus: {
+      ongoing: number;
+      completed: number;
+    };
+    recentActivities: { title: string }[];
+  }
 
-  const [dashboardData, setDashboardData] = useState<any>(null);
+  const [dashboardData, setDashboardData] = useState<DashboardData | null>(
+    null
+  );
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -23,6 +35,8 @@ const DashboardHome = () => {
         const response = await axios.get("/api/dashboard-data");
         setDashboardData(response.data.data);
       } catch (err) {
+        console.log(err);
+
         setError("Failed to fetch dashboard data.");
       } finally {
         setLoading(false);
@@ -33,7 +47,7 @@ const DashboardHome = () => {
   }, []);
 
   if (loading) {
-    return <div className="flex justify-center items-center">Loading...</div>;
+    return <div className="flex items-center justify-center">Loading...</div>;
   }
 
   if (error) {
@@ -105,11 +119,11 @@ const DashboardHome = () => {
             key={index}
             className="flex items-center gap-4 rounded-lg bg-white p-4 shadow-md dark:bg-dark-200"
           >
-            <div className="h-12 w-12 flex-shrink-0 rounded-full bg-black p-3">
+            <div className="size-12 shrink-0 rounded-full bg-black p-3">
               <img
                 src={metric.icon}
                 alt={metric.title}
-                className="h-full w-full invert"
+                className="size-full invert"
               />
             </div>
             <div>
@@ -126,9 +140,9 @@ const DashboardHome = () => {
         <ul className="space-y-4">
           {dashboardData?.recentActivities?.length > 0 ? (
             dashboardData.recentActivities.map(
-              (activity: any, index: number) => (
+              (activity: { title: string }, index: number) => (
                 <li key={index} className="flex items-center gap-4">
-                  <div className="h-2 w-2 flex-shrink-0 rounded-full bg-black"></div>
+                  <div className="size-2 shrink-0 rounded-full bg-black"></div>
                   <p className="text-sm">{activity.title}</p>
                 </li>
               )
@@ -143,7 +157,7 @@ const DashboardHome = () => {
       <div className="mt-8">
         <div className="rounded-lg bg-white p-6 shadow-md dark:bg-dark-200">
           <h2 className="mb-4 text-lg font-bold">Project Status Overview</h2>
-          <div className="h-64 w-full flex items-center justify-center">
+          <div className="flex h-64 w-full items-center justify-center">
             <Pie data={projectStatusData} />
           </div>
         </div>

@@ -57,11 +57,11 @@ export default {
         heroLight: `linear-gradient(
           rgba(21, 20, 25, 0.4), 
           rgba(21, 20, 25, 0.7)
-        ), url('/images/newhero.jpg')`,
+        ), url('/images/newhero.JPG')`,
         heroDark: `linear-gradient(
           rgba(0, 0, 0, 0.3),
           rgba(0, 0, 0, 0.5)
-        ), url('/images/newhero.jpg')`,
+        ), url('/images/newhero.JPG')`,
         logoLight: "url('/images/new-logo.png')",
         logoDark: "url('/images/logo_dark.png')",
         logoTransparent: "url('/images/nav-logo.png')",

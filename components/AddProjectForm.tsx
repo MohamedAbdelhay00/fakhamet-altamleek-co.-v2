@@ -1,18 +1,18 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { ProjectSchema } from "@/lib/validations";
 import { z } from "zod";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
+
 import { Button } from "@/components/ui/button";
-import { Toast } from "@radix-ui/react-toast";
-import axios from "axios";
-import { DialogFooter } from "./ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
+import { ProjectSchema } from "@/lib/validations";
+
+import { DialogFooter } from "./ui/dialog";
 
 type FormData = z.infer<typeof ProjectSchema>;
 
@@ -40,31 +40,44 @@ export const AddProjectForm = ({ onClose }: { onClose: () => void }) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="space-y-4 py-2 pb-4">
         <div>
-          <Label htmlFor="name">Name</Label>
-          <Input id="name" {...register("name")} />
-          {errors.name && (
-            <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
-          )}
-        </div>
-        <div>
-          <Label htmlFor="location">Location</Label>
-          <Input id="location" {...register("location")} />
-          {errors.location && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.location.message}
+          <Label htmlFor="title-en">Title (English)</Label>
+          <Input id="title-en" {...register("data.en.title")} />
+          {errors.data?.en?.title && (
+            <p className="mt-1 text-sm text-red-500">
+              {errors.data.en.title.message}
             </p>
           )}
         </div>
         <div>
-          <Label htmlFor="description">Description</Label>
-          <Textarea id="description" {...register("description")} />
-          {errors.description && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.description.message}
+          <Label htmlFor="title-ar">Title (Arabic)</Label>
+          <Input id="title-ar" {...register("data.ar.title")} />
+          {errors.data?.ar?.title && (
+            <p className="mt-1 text-sm text-red-500">
+              {errors.data.ar.title.message}
             </p>
           )}
         </div>
-        {/* Add more fields as needed */}
+        <div>
+          <Label htmlFor="startingPrice">Starting Price</Label>
+          <Input
+            id="startingPrice"
+            type="number"
+            {...register("startingPrice")}
+          />
+          {errors.startingPrice && (
+            <p className="mt-1 text-sm text-red-500">
+              {errors.startingPrice.message}
+            </p>
+          )}
+        </div>
+        <div>
+          <Label htmlFor="area">Area</Label>
+          <Input id="area" type="number" {...register("area")} />
+          {errors.area && (
+            <p className="mt-1 text-sm text-red-500">{errors.area.message}</p>
+          )}
+        </div>
+        {/* Add more fields as defined in ProjectSchema */}
       </div>
       <DialogFooter>
         <Button type="submit">Submit</Button>

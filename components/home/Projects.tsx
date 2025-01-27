@@ -8,7 +8,6 @@ import React, { useEffect, useState } from "react";
 import { useLocale } from "@/context/LocaleContext";
 
 import { Button } from "../ui/button";
-import { useParams } from "next/navigation";
 
 type ProjectData = {
   en: {
@@ -35,12 +34,11 @@ const Projects: React.FC = () => {
   const t = useTranslations("projects");
   const { locale, routes } = useLocale();
   const [projects, setProjects] = useState<Project[]>([]);
-  const { projectId } = useParams();
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch(`/api/projects?limit=3&sort=newest`);
+        const response = await fetch(`/api/projects`);
         const data = await response.json();
 
         setProjects(data.data);

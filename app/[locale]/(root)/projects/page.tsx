@@ -1,12 +1,13 @@
 "use client";
 
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import ClipLoader from "react-spinners/ClipLoader"; // Import the spinner component
+
 import { Button } from "@/components/ui/button";
 import { useLocale } from "@/context/LocaleContext";
-import axios from "axios";
-import ClipLoader from "react-spinners/ClipLoader"; // Import the spinner component
 
 const Projects = () => {
   type Project = {
@@ -42,18 +43,36 @@ const Projects = () => {
 
         // Fetch projects from the database
         const apiResponse = await axios.get("/api/projects"); // Replace with your actual API endpoint
-        const projectsFromDb = apiResponse.data.data.map((project: any) => ({
-          id: project._id,
-          title:
-            locale === "ar" ? project.data.ar.title : project.data.en.title,
-          description:
-            locale === "ar"
-              ? project.data.ar.description
-              : project.data.en.description,
-          price: `${project.startingPrice} SAR`,
-          image: project.coverImage,
-          link: project._id, // Use the project ID or a specific link
-        }));
+        type ApiProject = {
+          _id: string;
+          data: {
+            ar: {
+              title: string;
+              description: string;
+            };
+            en: {
+              title: string;
+              description: string;
+            };
+          };
+          startingPrice: number;
+          coverImage: string;
+        };
+
+        const projectsFromDb = apiResponse.data.data.map(
+          (project: ApiProject) => ({
+            id: project._id,
+            title:
+              locale === "ar" ? project.data.ar.title : project.data.en.title,
+            description:
+              locale === "ar"
+                ? project.data.ar.description
+                : project.data.en.description,
+            price: `${project.startingPrice} SAR`,
+            image: project.coverImage,
+            link: project._id, // Use the project ID or a specific link
+          })
+        );
 
         // Combine locale data with the projects data
         setProjectDetails({
@@ -72,7 +91,7 @@ const Projects = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex min-h-screen items-center justify-center">
         <ClipLoader size={50} color={"#123abc"} loading={loading} />
       </div>
     );

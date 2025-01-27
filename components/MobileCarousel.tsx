@@ -1,4 +1,6 @@
+import Image from "next/image";
 import React from "react";
+
 import {
   Carousel,
   CarouselContent,
@@ -6,7 +8,6 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from "./ui/carousel";
-import Image from "next/image";
 
 type Review = {
   id: number;

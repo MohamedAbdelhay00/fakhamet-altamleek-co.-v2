@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import dbConnect from "@/lib/mongoose"; // Ensure you have a helper to connect to MongoDB
+
 import DashboardModel from "@/database/dashboardMetrics.model"; // Dashboard schema model
+import dbConnect from "@/lib/mongoose"; // Ensure you have a helper to connect to MongoDB
 
 // GET route: Fetch data from the database
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     // Connect to the database
-    const db = await dbConnect();
+    await dbConnect();
 
     // Retrieve dashboard data
     const dashboardData = await DashboardModel.findOne();
@@ -41,7 +42,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Connect to the database
-    const db = await dbConnect();
+    await dbConnect();
 
     // Upsert data (update if exists, insert if not)
     const result = await DashboardModel.findOneAndUpdate(

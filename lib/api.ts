@@ -1,6 +1,5 @@
-import ROUTES from "@/constants/routes";
 import { IAccount } from "@/database/account.model";
-import { IAdmin } from "@/database/admin.model";
+import { IUser } from "@/database/admin.model";
 
 import { fetchHandler } from "./handlers/fetch";
 
@@ -14,7 +13,7 @@ export const api = {
       provider,
       providerAccountId,
     }: SignInWithOAuthParams) =>
-      fetchHandler(`${API_BASE_URL}/auth/${ROUTES.SIGN_IN_WITH_OAUTH}`, {
+      fetchHandler(`${API_BASE_URL}/auth/sign-in`, {
         method: "POST",
         body: JSON.stringify({ user, provider, providerAccountId }),
       }),
@@ -27,12 +26,12 @@ export const api = {
         method: "POST",
         body: JSON.stringify({ email }),
       }),
-    create: (userData: Partial<IAdmin>) =>
+    create: (userData: Partial<IUser>) =>
       fetchHandler(`${API_BASE_URL}/users`, {
         method: "POST",
         body: JSON.stringify(userData),
       }),
-    update: (id: string, userData: Partial<IAdmin>) =>
+    update: (id: string, userData: Partial<IUser>) =>
       fetchHandler(`${API_BASE_URL}/users/${id}`, {
         method: "PUT",
         body: JSON.stringify(userData),

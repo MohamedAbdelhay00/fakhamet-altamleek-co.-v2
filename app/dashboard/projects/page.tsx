@@ -1,9 +1,17 @@
 "use client";
 
+import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useLocale } from "@/context/LocaleContext";
 import { useEffect, useState } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
+
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import {
   Table,
   TableBody,
@@ -12,15 +20,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import handleError from "@/lib/handlers/error";
-import axios from "axios";
-import ClipLoader from "react-spinners/ClipLoader";
 
 interface Project {
   _id: string;
@@ -51,7 +51,6 @@ interface Project {
 }
 
 const ProjectsPage = () => {
-  const { locale } = useLocale();
   const router = useRouter();
   const [viewDialog, setViewDialog] = useState(false);
   const [deleteDialog, setDeleteDialog] = useState(false);
@@ -62,6 +61,7 @@ const ProjectsPage = () => {
 
   useEffect(() => {
     fetchProjects();
+    console.log(error);
   }, []);
 
   const fetchProjects = async () => {
@@ -114,7 +114,7 @@ const ProjectsPage = () => {
 
       {/* Projects Section */}
       {loading ? (
-        <div className="flex justify-center items-center min-h-[200px]">
+        <div className="flex min-h-[200px] items-center justify-center">
           <ClipLoader size={50} color={"#123abc"} loading={loading} />
         </div>
       ) : projects.length === 0 ? (

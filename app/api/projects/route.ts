@@ -1,12 +1,12 @@
+import { NextResponse } from "next/server";
+
 import Project from "@/database/project.model";
 import handleError from "@/lib/handlers/error";
 import { ValidationError } from "@/lib/http-errors";
 import dbConnect from "@/lib/mongoose";
 import { ProjectSchema } from "@/lib/validations";
-import { NextApiRequest, NextApiResponse } from "next";
-import { NextResponse } from "next/server";
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+export async function GET() {
   try {
     await dbConnect();
     const projects = await Project.find();

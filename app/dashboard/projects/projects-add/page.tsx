@@ -1,13 +1,12 @@
 "use client";
 
+import axios from "axios";
+import Image from "next/image";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
+
 import { Button } from "@/components/ui/button";
-import axios from "axios";
-import { LocalizedDataSchema, ProjectSchema } from "@/lib/validations";
-import { z } from "zod";
-import Link from "next/link";
-import Image from "next/image";
 
 type FormData = {
   data: {
@@ -42,7 +41,7 @@ const ProjectsAddEdit = () => {
   const projectId = searchParams.get("id");
 
   const [step, setStep] = useState<number>(1);
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors] = useState<Record<string, string>>({});
   const [formData, setFormData] = useState<FormData>({
     data: {
       en: { title: "", description: "", neighborhood: "", services: [] },
@@ -76,63 +75,6 @@ const ProjectsAddEdit = () => {
       fetchProject();
     }
   }, [projectId]);
-
-  // const validateStep = (): boolean => {
-  //   try {
-  //     if (step === 1) {
-  //       ProjectSchema.pick({
-  //         data: z.object({
-  //           en: LocalizedDataSchema,
-  //         }),
-  //       }).parse({
-  //         data: {
-  //           en: formData.data.en,
-  //         },
-  //       });
-  //     } else if (step === 2) {
-  //       ProjectSchema.pick({
-  //         data: z.object({
-  //           ar: LocalizedDataSchema,
-  //         }),
-  //       }).parse({
-  //         data: {
-  //           ar: formData.data.ar,
-  //         },
-  //       });
-  //     } else if (step === 3) {
-  //       ProjectSchema.pick({
-  //         startingPrice: ProjectSchema.shape.startingPrice,
-  //         area: ProjectSchema.shape.area,
-  //         rooms: ProjectSchema.shape.rooms,
-  //         baths: ProjectSchema.shape.baths,
-  //         floors: ProjectSchema.shape.floors,
-  //         developer: ProjectSchema.shape.developer,
-  //         numberOfProperties: ProjectSchema.shape.numberOfProperties,
-  //         coverImage: ProjectSchema.shape.coverImage,
-  //       }).parse({
-  //         startingPrice: Number(formData.startingPrice),
-  //         area: Number(formData.area),
-  //         rooms: Number(formData.rooms),
-  //         baths: Number(formData.baths),
-  //         floors: Number(formData.floors),
-  //         developer: formData.developer,
-  //         numberOfProperties: Number(formData.numberOfProperties),
-  //         coverImage: formData.coverImage,
-  //       });
-  //     }
-  //     setErrors({});
-  //     return true;
-  //   } catch (error) {
-  //     if (error instanceof z.ZodError) {
-  //       const validationErrors: Record<string, string> = {};
-  //       error.errors.forEach((e) => {
-  //         validationErrors[e.path.join(".")] = e.message;
-  //       });
-  //       setErrors(validationErrors);
-  //     }
-  //     return false;
-  //   }
-  // };
 
   const handleNext = () => {
     // const isValid = validateStep();
@@ -189,8 +131,8 @@ const ProjectsAddEdit = () => {
   };
 
   return (
-    <div className="p-8 flex flex-col gap-4">
-      <h1 className="text-2xl font-bold mb-4">
+    <div className="flex flex-col gap-4 p-8">
+      <h1 className="mb-4 text-2xl font-bold">
         <Link href="/dashboard/projects">
           <Image
             src="/icons/back.svg"
@@ -205,14 +147,14 @@ const ProjectsAddEdit = () => {
       <form onSubmit={handleSubmit} className="space-y-4">
         {step === 1 && (
           <div>
-            <h2 className="text-lg font-semibold mb-4">
+            <h2 className="mb-4 text-lg font-semibold">
               Step 1: English Details
             </h2>
             <div>
               <label className="block text-sm font-medium">Title (EN)</label>
               <input
                 type="text"
-                className="w-full border rounded-md p-2"
+                className="w-full rounded-md border p-2"
                 value={formData.data.en.title}
                 onChange={(e) =>
                   setFormData({
@@ -233,7 +175,7 @@ const ProjectsAddEdit = () => {
                 Description (EN)
               </label>
               <textarea
-                className="w-full border rounded-md p-2"
+                className="w-full rounded-md border p-2"
                 value={formData.data.en.description}
                 onChange={(e) =>
                   setFormData({
@@ -255,7 +197,7 @@ const ProjectsAddEdit = () => {
               </label>
               <input
                 type="text"
-                className="w-full border rounded-md p-2"
+                className="w-full rounded-md border p-2"
                 value={formData.data.en.neighborhood}
                 onChange={(e) =>
                   setFormData({
@@ -276,7 +218,7 @@ const ProjectsAddEdit = () => {
               <div className="flex items-center gap-2">
                 <input
                   type="text"
-                  className="flex-1 border rounded-md p-2"
+                  className="flex-1 rounded-md border p-2"
                   placeholder="Add a service"
                   value={newService}
                   onChange={(e) => setNewService(e.target.value)}
@@ -285,17 +227,17 @@ const ProjectsAddEdit = () => {
                   Add
                 </Button>
               </div>
-              <div className="flex gap-2 flex-wrap mt-2">
+              <div className="mt-2 flex flex-wrap gap-2">
                 {formData.data.en.services.map((service, index) => (
                   <span
                     key={index}
-                    className="bg-gray-200 px-2 py-1 rounded flex items-center gap-2"
+                    className="flex items-center gap-2 rounded bg-gray-200 px-2 py-1"
                   >
                     {service}
                     <button
                       type="button"
                       onClick={() => handleRemoveService("en", index)}
-                      className="text-red-500 font-bold"
+                      className="font-bold text-red-500"
                     >
                       ×
                     </button>
@@ -307,14 +249,14 @@ const ProjectsAddEdit = () => {
         )}
         {step === 2 && (
           <div>
-            <h2 className="text-lg font-semibold mb-4">
+            <h2 className="mb-4 text-lg font-semibold">
               Step 2: Arabic Details
             </h2>
             <div>
               <label className="block text-sm font-medium">Title (AR)</label>
               <input
                 type="text"
-                className="w-full border rounded-md p-2"
+                className="w-full rounded-md border p-2"
                 value={formData.data.ar.title}
                 onChange={(e) =>
                   setFormData({
@@ -335,7 +277,7 @@ const ProjectsAddEdit = () => {
                 Description (AR)
               </label>
               <textarea
-                className="w-full border rounded-md p-2"
+                className="w-full rounded-md border p-2"
                 value={formData.data.ar.description}
                 onChange={(e) =>
                   setFormData({
@@ -357,7 +299,7 @@ const ProjectsAddEdit = () => {
               </label>
               <input
                 type="text"
-                className="w-full border rounded-md p-2"
+                className="w-full rounded-md border p-2"
                 value={formData.data.ar.neighborhood}
                 onChange={(e) =>
                   setFormData({
@@ -375,7 +317,7 @@ const ProjectsAddEdit = () => {
               <div className="flex items-center gap-2">
                 <input
                   type="text"
-                  className="flex-1 border rounded-md p-2"
+                  className="flex-1 rounded-md border p-2"
                   placeholder="Add a service"
                   value={newService}
                   onChange={(e) => setNewService(e.target.value)}
@@ -384,17 +326,17 @@ const ProjectsAddEdit = () => {
                   Add
                 </Button>
               </div>
-              <div className="flex gap-2 flex-wrap mt-2">
+              <div className="mt-2 flex flex-wrap gap-2">
                 {formData.data.ar.services.map((service, index) => (
                   <span
                     key={index}
-                    className="bg-gray-200 px-2 py-1 rounded flex items-center gap-2"
+                    className="flex items-center gap-2 rounded bg-gray-200 px-2 py-1"
                   >
                     {service}
                     <button
                       type="button"
                       onClick={() => handleRemoveService("ar", index)}
-                      className="text-red-500 font-bold"
+                      className="font-bold text-red-500"
                     >
                       ×
                     </button>
@@ -406,7 +348,7 @@ const ProjectsAddEdit = () => {
         )}
         {step === 3 && (
           <>
-            <h2 className="text-lg font-semibold mb-4">
+            <h2 className="mb-4 text-lg font-semibold">
               Step 3: Numeric Details
             </h2>
             <div>
@@ -415,7 +357,7 @@ const ProjectsAddEdit = () => {
               </label>
               <input
                 type="number"
-                className="w-full border rounded-md p-2"
+                className="w-full rounded-md border p-2"
                 value={formData.startingPrice}
                 onChange={(e) =>
                   setFormData({ ...formData, startingPrice: +e.target.value })
@@ -429,7 +371,7 @@ const ProjectsAddEdit = () => {
               <label className="block text-sm font-medium">Area</label>
               <input
                 type="number"
-                className="w-full border rounded-md p-2"
+                className="w-full rounded-md border p-2"
                 value={formData.area}
                 onChange={(e) =>
                   setFormData({ ...formData, area: +e.target.value })
@@ -441,7 +383,7 @@ const ProjectsAddEdit = () => {
               <label className="block text-sm font-medium">Rooms</label>
               <input
                 type="number"
-                className="w-full border rounded-md p-2"
+                className="w-full rounded-md border p-2"
                 value={formData.rooms}
                 onChange={(e) =>
                   setFormData({ ...formData, rooms: +e.target.value })
@@ -453,7 +395,7 @@ const ProjectsAddEdit = () => {
               <label className="block text-sm font-medium">Baths</label>
               <input
                 type="number"
-                className="w-full border rounded-md p-2"
+                className="w-full rounded-md border p-2"
                 value={formData.baths}
                 onChange={(e) =>
                   setFormData({ ...formData, baths: +e.target.value })
@@ -465,7 +407,7 @@ const ProjectsAddEdit = () => {
               <label className="block text-sm font-medium">Floors</label>
               <input
                 type="number"
-                className="w-full border rounded-md p-2"
+                className="w-full rounded-md border p-2"
                 value={formData.floors}
                 onChange={(e) =>
                   setFormData({ ...formData, floors: +e.target.value })
@@ -477,7 +419,7 @@ const ProjectsAddEdit = () => {
               <label className="block text-sm font-medium">Developer</label>
               <input
                 type="text"
-                className="w-full border rounded-md p-2"
+                className="w-full rounded-md border p-2"
                 value={formData.developer}
                 onChange={(e) =>
                   setFormData({ ...formData, developer: e.target.value })
@@ -493,7 +435,7 @@ const ProjectsAddEdit = () => {
               </label>
               <input
                 type="number"
-                className="w-full border rounded-md p-2"
+                className="w-full rounded-md border p-2"
                 value={formData.numberOfProperties}
                 onChange={(e) =>
                   setFormData({
@@ -510,7 +452,7 @@ const ProjectsAddEdit = () => {
               <label className="block text-sm font-medium">Cover Image</label>
               <input
                 type="text"
-                className="w-full border rounded-md p-2"
+                className="w-full rounded-md border p-2"
                 value={formData.coverImage}
                 onChange={(e) =>
                   setFormData({ ...formData, coverImage: e.target.value })
@@ -524,7 +466,7 @@ const ProjectsAddEdit = () => {
               <label className="block text-sm font-medium">Images</label>
               <input
                 type="text"
-                className="w-full border rounded-md p-2"
+                className="w-full rounded-md border p-2"
                 value={formData.images.join(",")}
                 onChange={(e) =>
                   setFormData({
