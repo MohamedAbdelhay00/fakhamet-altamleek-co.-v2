@@ -21,8 +21,14 @@ import { ProjectSchema } from "@/lib/validations";
 
 export async function GET() {
   try {
+    console.time("Database Connection");
     await dbConnect();
-    const projects = await Project.find();
+    console.timeEnd("Database Connection");
+
+    console.time("Fetch Projects");
+    const projects = await Project.find().limit(100); // Limit results for performance
+    console.timeEnd("Fetch Projects");
+
     return NextResponse.json(
       { success: true, data: projects },
       { status: 200 }
