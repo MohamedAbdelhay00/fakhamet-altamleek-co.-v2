@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/projects.js": {
+    "app/api/projects/route.js": {
       "maxDuration": 30
     }
   }
