@@ -35,12 +35,30 @@ const Projects: React.FC = () => {
   const { locale, routes } = useLocale();
   const [projects, setProjects] = useState<Project[]>([]);
 
+  // useEffect(() => {
+  //   const fetchProjects = async () => {
+  //     try {
+  //       const response = await fetch(`/api/projects`);
+  //       const data = await response.json();
+
+  //       setProjects(data.data);
+  //     } catch (error) {
+  //       console.error("Error loading projects:", error);
+  //     }
+  //   };
+
+  //   fetchProjects();
+  // }, [locale]);
   useEffect(() => {
     const fetchProjects = async () => {
       try {
         const response = await fetch(`/api/projects`);
-        const data = await response.json();
-
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const text = await response.text(); // Log the raw response
+        console.log("Raw response:", text);
+        const data = JSON.parse(text); // Parse the response as JSON
         setProjects(data.data);
       } catch (error) {
         console.error("Error loading projects:", error);

@@ -6,6 +6,19 @@ import { ValidationError } from "@/lib/http-errors";
 import dbConnect from "@/lib/mongoose";
 import { ProjectSchema } from "@/lib/validations";
 
+// export async function GET() {
+//   try {
+//     await dbConnect();
+//     const projects = await Project.find();
+//     return NextResponse.json(
+//       { success: true, data: projects },
+//       { status: 200 }
+//     );
+//   } catch (error) {
+//     return handleError(error, "api") as APIErrorResponse;
+//   }
+// }
+
 export async function GET() {
   try {
     await dbConnect();
@@ -15,10 +28,13 @@ export async function GET() {
       { status: 200 }
     );
   } catch (error) {
-    return handleError(error, "api") as APIErrorResponse;
+    console.error("Error fetching projects:", error);
+    return NextResponse.json(
+      { success: false, error: "An error occurred" },
+      { status: 500 }
+    );
   }
 }
-
 export async function POST(request: Request) {
   try {
     // Connect to the database

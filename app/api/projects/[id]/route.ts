@@ -1,8 +1,9 @@
+import { Types } from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
 import Project from "@/database/project.model";
 import handleError from "@/lib/handlers/error";
-import { NotFoundError, ValidationError } from "@/lib/http-errors";
+import { NotFoundError } from "@/lib/http-errors";
 import dbConnect from "@/lib/mongoose";
 import { ProjectSchema } from "@/lib/validations";
 
@@ -27,42 +28,66 @@ export async function GET(
   }
 }
 
-// PUT (Update by ID)
 export async function PUT(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await dbConnect();
+
+    console.log("Params received:", params);
     const { id } = await params;
 
-    if (!id) throw new NotFoundError("Project");
+    // Validate Project ID
+    if (!id || !Types.ObjectId.isValid(id)) {
+      throw new NotFoundError("Invalid Project ID");
+    }
 
-    const body = await request.json();
+    // Parse request body
+    let body;
+    try {
+      body = await request.json();
+      console.log("Request body received:", body); // Debugging
+    } catch (error) {
+      console.error("Invalid JSON in request body:", error);
+      return NextResponse.json(
+        { success: false, error: "Invalid JSON in request body" },
+        { status: 400 }
+      );
+    }
 
     // Validate the incoming data
     const validatedData = ProjectSchema.safeParse(body);
     if (!validatedData.success) {
-      throw new ValidationError(validatedData.error.flatten().fieldErrors);
+      console.error(
+        "Validation Errors:",
+        validatedData.error.flatten().fieldErrors
+      );
+      return NextResponse.json(
+        { success: false, errors: validatedData.error.flatten().fieldErrors },
+        { status: 400 }
+      );
     }
 
     // Update the project
     const updatedProject = await Project.findByIdAndUpdate(
       id,
       validatedData.data,
-      {
-        new: true, // Return the updated document
-        runValidators: true, // Ensure validators run on update
-      }
+      { new: true, runValidators: true }
     );
 
-    if (!updatedProject) throw new NotFoundError("Project");
+    if (!updatedProject) {
+      console.error("Project not found for ID:", id);
+      throw new NotFoundError("Project");
+    }
 
+    console.log("Updated project:", updatedProject); // Debugging
     return NextResponse.json(
       { success: true, data: updatedProject },
       { status: 200 }
     );
   } catch (error) {
+    console.error("Error in PUT request:", error);
     return handleError(error, "api") as APIErrorResponse;
   }
 }
