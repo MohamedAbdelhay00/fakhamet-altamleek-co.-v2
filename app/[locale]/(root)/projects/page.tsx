@@ -1,6 +1,4 @@
 "use client";
-
-import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -32,6 +30,8 @@ const Projects = () => {
   const [loading, setLoading] = useState(true); // Add loading state
   const { locale, routes } = useLocale();
 
+  // ... existing code ...
+
   useEffect(() => {
     const fetchProjects = async () => {
       try {
@@ -41,26 +41,24 @@ const Projects = () => {
         );
         const localesData = localesResponse.default.projectDetails;
 
-        // Fetch projects from the database
-        const apiResponse = await axios.get("/api/projects"); // Replace with your actual API endpoint
-        type ApiProject = {
-          _id: string;
-          data: {
-            ar: {
-              title: string;
-              description: string;
+        // Fetch projects from static JSON file
+        const projectsResponse = await import(`@/constants/projects.json`);
+        const projectsFromJson = projectsResponse.default.data.map(
+          (project: {
+            _id: string;
+            data: {
+              ar: {
+                title: string;
+                description: string;
+              };
+              en: {
+                title: string;
+                description: string;
+              };
             };
-            en: {
-              title: string;
-              description: string;
-            };
-          };
-          startingPrice: number;
-          coverImage: string;
-        };
-
-        const projectsFromDb = apiResponse.data.data.map(
-          (project: ApiProject) => ({
+            startingPrice: number;
+            coverImage: string;
+          }) => ({
             id: project._id,
             title:
               locale === "ar" ? project.data.ar.title : project.data.en.title,
@@ -70,14 +68,14 @@ const Projects = () => {
                 : project.data.en.description,
             price: `${project.startingPrice} SAR`,
             image: project.coverImage,
-            link: project._id, // Use the project ID or a specific link
+            link: project._id,
           })
         );
 
         // Combine locale data with the projects data
         setProjectDetails({
           ...localesData,
-          cards: projectsFromDb,
+          cards: projectsFromJson,
         });
       } catch (error) {
         console.error("Error loading projects:", error);
@@ -88,6 +86,8 @@ const Projects = () => {
 
     fetchProjects();
   }, [locale]);
+
+  // ... existing code ...
 
   if (loading) {
     return (
