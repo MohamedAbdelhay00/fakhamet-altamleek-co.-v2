@@ -1,0 +1,126 @@
+{
+  "success": true,
+  "data": [
+    {
+      "data": {
+        "en": {
+          "title": "Al Faisalyah",
+          "description": "Al Faisaliyah is a luxurious residential and commercial development offering modern living and business spaces in a prime location.",
+          "neighborhood": "Al Faisalyah",
+          "services": ["City View", "Driver Room", "Maid Room", "Parking"],
+          "_id": "678bc950098139c4298a1d03"
+        },
+        "ar": {
+          "title": "الفيصلية",
+          "description": "الفيصلية هو مشروع سكني وتجاري فاخر يقدم مساحات معيشة وعمل حديثة في موقع متميز.",
+          "neighborhood": "الفيصلية",
+          "services": [
+            "إطلالة على المدينة",
+            "غرفة سائق",
+            "غرفة خادمة",
+            "مواقف سيارات"
+          ],
+          "_id": "678bc950098139c4298a1d02"
+        }
+      },
+      "_id": "678bc90a098139c4298a1cf7",
+      "startingPrice": 850000,
+      "area": 170,
+      "rooms": 6,
+      "baths": 3,
+      "floors": 6,
+      "status": "ongoing",
+      "developer": "FA",
+      "numberOfProperties": 25,
+      "images": [
+        "/images/outside.jpg",
+        "/images/outside2.jpg",
+        "/images/room.jpg",
+        "/images/room2.jpg",
+        "/images/bath.jpg"
+      ],
+      "coverImage": "/images/newhero.jpg",
+      "createdAt": "2025-01-18T15:30:18.465Z",
+      "updatedAt": "2025-01-18T15:31:28.873Z",
+      "__v": 0
+    },
+    {
+      "data": {
+        "en": {
+          "title": "Al Fayhaa",
+          "description": "Al Fayhaa is a modern residential and commercial project designed for comfort and convenience, located in a strategic area with exceptional amenities.",
+          "neighborhood": "Al Fayhaa District",
+          "services": ["City View", "Driver Room", "Maid Room", "Parking"],
+          "_id": "678bccb5098139c4298a1d28"
+        },
+        "ar": {
+          "title": "الفيحاء",
+          "description": "الفيحاء هو مشروع سكني وتجاري حديث مصمم للراحة والملاءمة، يقع في منطقة استراتيجية ويوفر مرافق استثنائية.",
+          "neighborhood": "حي الفيحاء",
+          "services": [
+            "إطلالة على المدينة",
+            "غرفة سائق",
+            "غرفة خادمة",
+            "مواقف سيارات"
+          ],
+          "_id": "678bccb5098139c4298a1d27"
+        }
+      },
+      "_id": "678bcc2d098139c4298a1d1a",
+      "startingPrice": 650000,
+      "area": 170,
+      "rooms": 7,
+      "baths": 3,
+      "floors": 6,
+      "status": "ongoing",
+      "developer": "FA",
+      "numberOfProperties": 45,
+      "images": [
+        "/images/frontview.jpg",
+        "/images/reception.jpg",
+        "/images/apartment1.jpg",
+        "/images/apartment2.jpg",
+        "/images/apartment3.jpg",
+        "/images/apartment4.jpg",
+        "/images/apartment5.jpg",
+        "/images/bathroom.jpg"
+      ],
+      "coverImage": "/images/frontview2.jpg",
+      "createdAt": "2025-01-18T15:43:41.981Z",
+      "updatedAt": "2025-01-18T15:45:57.033Z",
+      "__v": 0
+    },
+    {
+      "data": {
+        "en": {
+          "title": "Darb Al Haramein",
+          "description": "Darb Al Haramein is a luxurious residential and commercial development offering modern living and business spaces in a prime location.",
+          "neighborhood": "Darb Al Haramein",
+          "services": ["Driver Room"],
+          "_id": "679cfe3c5eeeb505865aa73b"
+        },
+        "ar": {
+          "title": "درب الحرمين",
+          "description": "درب الحرمين هو مشروع سكني وتجاري فاخر يقدم مساحات معيشة وعمل حديثة في موقع متميز.",
+          "neighborhood": "الحرمين",
+          "services": ["الالة على المدينة", "غرفة سائق"],
+          "_id": "679cfe3c5eeeb505865aa73c"
+        }
+      },
+      "_id": "679cfe3c5eeeb505865aa73a",
+      "startingPrice": 750000,
+      "area": 173,
+      "rooms": 6,
+      "baths": 3,
+      "floors": 6,
+      "status": "ongoing",
+      "developer": "FA",
+      "numberOfProperties": 25,
+      "images": [],
+      "coverImage": "/images/coming-soon.png",
+      "createdAt": "2025-01-31T16:45:48.710Z",
+      "updatedAt": "2025-01-31T16:45:48.710Z",
+      "__v": 0
+    }
+  ]
+}

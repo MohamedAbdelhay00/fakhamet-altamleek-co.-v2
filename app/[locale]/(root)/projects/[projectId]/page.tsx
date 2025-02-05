@@ -1,6 +1,4 @@
 "use client";
-
-import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -12,6 +10,7 @@ import MobileGallery from "@/components/gallery/MobileGallery";
 import ImageGallery from "@/components/ImageGallery";
 import TableC from "@/components/TableC";
 import { Button } from "@/components/ui/button";
+import projectsData from "@/constants/projects.json";
 import { useLocale } from "@/context/LocaleContext";
 
 interface Project {
@@ -21,7 +20,15 @@ interface Project {
   area: number;
   developer: string;
   data: {
-    [key: string]: {
+    en: {
+      title: string;
+      description: string;
+      neighborhood: string;
+      services: string[];
+    };
+    ar: {
+      title: string;
+      description: string;
       neighborhood: string;
       services: string[];
     };
@@ -30,7 +37,7 @@ interface Project {
   rooms: number;
   floors: number;
   description: string;
-  size: string;
+  size?: string;
 }
 
 const ProjectDetails = () => {
@@ -51,12 +58,32 @@ const ProjectDetails = () => {
   }, []);
 
   useEffect(() => {
-    const fetchProject = async () => {
+    const fetchProject = () => {
       try {
-        const response = await axios.get(`/api/projects/${projectId}`);
+        const project = projectsData.data.find((p) => p._id === projectId);
 
-        setProjectData(response.data.data); // Fetch project data dynamically
-        console.log(response.data.data);
+        if (project) {
+          const localeData =
+            locale === "en" ? project.data.en : project.data.ar;
+          const transformedProject = {
+            id: project._id,
+            images: project.images || [],
+            startingPrice: project.startingPrice || 0,
+            area: project.area || 0,
+            developer: project.developer || "",
+            data: {
+              en: project.data.en,
+              ar: project.data.ar,
+            },
+            baths: project.baths || 0,
+            rooms: project.rooms || 0,
+            floors: project.floors || 0,
+            description: localeData.description,
+          };
+          setProjectData(transformedProject);
+        } else {
+          setError("Project not found");
+        }
       } catch (err) {
         console.error(err);
         setError("Failed to load project data.");
@@ -66,7 +93,7 @@ const ProjectDetails = () => {
     };
 
     if (projectId) fetchProject();
-  }, [projectId]);
+  }, [projectId, locale]);
 
   if (loading) {
     return (
@@ -144,9 +171,9 @@ const ProjectDetails = () => {
                 area,
                 startingPrice,
                 developer,
-                neighborhood: data[locale].neighborhood,
+                neighborhood: data[locale as "en" | "ar"].neighborhood,
                 numberOfProperties: 10,
-                services: data[locale].services,
+                services: data[locale as "en" | "ar"].services,
                 status,
               }}
             />

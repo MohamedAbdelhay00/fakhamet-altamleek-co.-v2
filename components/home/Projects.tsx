@@ -5,35 +5,51 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import React, { useEffect, useState } from "react";
 
+import projectsData from "@/constants/projects.json";
 import { useLocale } from "@/context/LocaleContext";
 
 import { Button } from "../ui/button";
 
-type ProjectData = {
-  en: {
-    title: string;
-    description: string;
-  };
-  ar: {
-    title: string;
-    description: string;
-  };
-};
-
 type Project = {
-  _id: number;
-  title: string;
-  description: string;
-  price: string;
-  link: string;
+  _id: string;
   coverImage: string;
-  data: ProjectData;
+  data: {
+    en: {
+      title: string;
+      description: string;
+      neighborhood: string;
+      services: string[];
+      _id: string;
+    };
+    ar: {
+      title: string;
+      description: string;
+      neighborhood: string;
+      services: string[];
+      _id: string;
+    };
+  };
+  price?: string;
+  __v: number;
 };
 
 const Projects: React.FC = () => {
   const t = useTranslations("projects");
   const { locale, routes } = useLocale();
   const [projects, setProjects] = useState<Project[]>([]);
+  useEffect(() => {
+    if (projectsData.success) {
+      const transformedProjects = projectsData.data.map(
+        (item: (typeof projectsData.data)[0]) => ({
+          _id: item._id,
+          coverImage: item.coverImage,
+          data: item.data,
+          __v: item.__v,
+        })
+      );
+      setProjects(transformedProjects);
+    }
+  }, []);
 
   // useEffect(() => {
   //   const fetchProjects = async () => {
@@ -49,24 +65,24 @@ const Projects: React.FC = () => {
 
   //   fetchProjects();
   // }, [locale]);
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await fetch(`/api/projects`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const text = await response.text(); // Log the raw response
-        console.log("Raw response:", text);
-        const data = JSON.parse(text); // Parse the response as JSON
-        setProjects(data.data);
-      } catch (error) {
-        console.error("Error loading projects:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchProjects = async () => {
+  //     try {
+  //       const response = await fetch(`/constants/projects.json`);
+  //       if (!response.ok) {
+  //         throw new Error(`HTTP error! Status: ${response.status}`);
+  //       }
+  //       const text = await response.text(); // Log the raw response
+  //       console.log("Raw response:", text);
+  //       const data = JSON.parse(text); // Parse the response as JSON
+  //       setProjects(data.data);
+  //     } catch (error) {
+  //       console.error("Error loading projects:", error);
+  //     }
+  //   };
 
-    fetchProjects();
-  }, [locale]);
+  //   fetchProjects();
+  // }, [locale]);
 
   return (
     <section className="bg-light-800 px-6 py-16 dark:bg-dark-100 sm:px-12 md:px-24">
