@@ -97,7 +97,7 @@ export default function ContactUs() {
 
   return (
     <section className="px-4 pb-10 pt-[110px] sm:px-10">
-      <div className="grid h-screen grid-cols-1 md:grid-cols-2">
+      <div className="grid grid-cols-1 md:grid-cols-2">
         {/* Left Section - Image */}
         <div className="relative h-[30vh] md:h-full">
           <div className="p-4 md:p-20">
