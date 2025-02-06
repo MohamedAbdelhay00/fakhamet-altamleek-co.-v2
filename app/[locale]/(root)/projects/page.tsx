@@ -50,14 +50,21 @@ const Projects = () => {
               ar: {
                 title: string;
                 description: string;
+                neighborhood: string;
+                services: string[];
+                _id: string;
               };
               en: {
                 title: string;
                 description: string;
+                neighborhood: string;
+                services: string[];
+                _id: string;
               };
             };
-            startingPrice: number;
+            startingPrice: string | number;
             coverImage: string;
+            __v: number;
           }) => ({
             id: project._id,
             title:
