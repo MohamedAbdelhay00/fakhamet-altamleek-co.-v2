@@ -33,7 +33,7 @@ const TableC: React.FC<TableCProps> = ({ projectDetails }) => {
             Status
           </TableCell>
           <TableCell className="border-b px-4 py-2 text-gray-800">
-            {status}
+            {status} Ongoing
           </TableCell>
         </TableRow>
         <TableRow className="bg-white">

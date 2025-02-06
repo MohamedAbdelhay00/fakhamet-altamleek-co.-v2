@@ -107,7 +107,10 @@
       "emailPlaceholder": "your@email.com",
       "message": "الرسالة",
       "messagePlaceholder": "اكتب رسالتك هنا...",
-      "button": "إرسال الرسالة"
+      "button": "إرسال الرسالة",
+      "successMessage": "تم إرسال الرسالة بنجاح!",
+      "errorMessage": "فشل إرسال الرسالة. يرجى المحاولة مرة أخرى.",
+      "sending": "إرسال..."
     },
     "details": {
       "location": "جدة، المملكة العربية السعودية",

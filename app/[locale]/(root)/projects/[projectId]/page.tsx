@@ -16,7 +16,7 @@ import { useLocale } from "@/context/LocaleContext";
 interface Project {
   id: string;
   images: string[];
-  startingPrice: number;
+  startingPrice: string | number;
   area: number;
   developer: string;
   data: {
@@ -38,6 +38,7 @@ interface Project {
   floors: number;
   description: string;
   size?: string;
+  status?: string;
 }
 
 const ProjectDetails = () => {
@@ -79,6 +80,7 @@ const ProjectDetails = () => {
             rooms: project.rooms || 0,
             floors: project.floors || 0,
             description: localeData.description,
+            status: project.status || "",
           };
           setProjectData(transformedProject);
         } else {
@@ -169,7 +171,7 @@ const ProjectDetails = () => {
             <TableC
               projectDetails={{
                 area,
-                startingPrice,
+                startingPrice: Number(startingPrice),
                 developer,
                 neighborhood: data[locale as "en" | "ar"].neighborhood,
                 numberOfProperties: 10,

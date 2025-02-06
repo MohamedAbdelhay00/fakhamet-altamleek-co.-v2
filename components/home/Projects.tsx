@@ -29,7 +29,7 @@ type Project = {
       _id: string;
     };
   };
-  price?: string;
+  startingPrice: string | number;
   __v: number;
 };
 
@@ -44,6 +44,7 @@ const Projects: React.FC = () => {
           _id: item._id,
           coverImage: item.coverImage,
           data: item.data,
+          startingPrice: item.startingPrice || "",
           __v: item.__v,
         })
       );
@@ -122,7 +123,9 @@ const Projects: React.FC = () => {
               </div>
             </div>
             <div className="flex items-center justify-between bg-transparent p-4">
-              <p className="text-lg font-bold text-primary">{project.price}</p>
+              <p className="text-lg font-bold text-primary">
+                {project?.startingPrice}
+              </p>
               <Link href={`${routes.projects}/${project._id}`}>
                 <Button className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-light-700 transition-all duration-300 hover:bg-[#D95A1B] dark:bg-primary dark:hover:bg-[#D95A1B]">
                   {t("button")}

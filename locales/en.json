@@ -107,7 +107,10 @@
       "emailPlaceholder": "your@email.com",
       "message": "Message",
       "messagePlaceholder": "...Type your message here",
-      "button": "Send Message"
+      "button": "Send Message",
+      "successMessage": "Message sent successfully!",
+      "errorMessage": "Failed to send message. Please try again.",
+      "sending": "Sending..."
     },
     "details": {
       "location": "Jeddah, Saudi Arabia",

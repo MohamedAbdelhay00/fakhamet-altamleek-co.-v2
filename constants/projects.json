@@ -24,7 +24,7 @@
         }
       },
       "_id": "678bc90a098139c4298a1cf7",
-      "startingPrice": 850000,
+      "startingPrice": "850,000",
       "area": 170,
       "rooms": 6,
       "baths": 3,
@@ -67,7 +67,7 @@
         }
       },
       "_id": "678bcc2d098139c4298a1d1a",
-      "startingPrice": 650000,
+      "startingPrice": "650,000",
       "area": 170,
       "rooms": 7,
       "baths": 3,
@@ -108,7 +108,7 @@
         }
       },
       "_id": "679cfe3c5eeeb505865aa73a",
-      "startingPrice": 750000,
+      "startingPrice": "750,000",
       "area": 173,
       "rooms": 6,
       "baths": 3,
