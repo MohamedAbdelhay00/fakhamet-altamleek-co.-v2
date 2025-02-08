@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import React from "react";
 import { FaInstagram, FaEnvelope, FaPhone } from "react-icons/fa";
 
@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 
 const Footer = () => {
   const t = useTranslations("home.footer");
+  const locale = useLocale();
 
   const quickLinks = t.raw("quickLinks") as string[];
 
@@ -117,7 +118,9 @@ const Footer = () => {
                 fill
                 style={{ objectFit: "contain" }}
                 alt="X"
-                className="text-light-400 transition-colors hover:text-primary-500 dark:text-light-500 dark:hover:text-primary-500"
+                className={`text-light-400 transition-colors hover:text-primary-500 dark:text-light-500 dark:hover:text-primary-500 ${
+                  locale === "ar" ? "mr-2" : ""
+                }`}
               />
             </div>
           </Link>
