@@ -1,11 +1,11 @@
 "use client";
-
+import Image from "next/image";
+import Link from "next/link";
 import { useTranslations } from "next-intl";
 import React from "react";
+import { FaInstagram, FaEnvelope, FaPhone } from "react-icons/fa";
+
 import { Input } from "@/components/ui/input";
-import { FaInstagram, FaTwitter, FaEnvelope, FaPhone } from "react-icons/fa"; // Import icons
-import Link from "next/link";
-import Image from "next/image";
 
 const Footer = () => {
   const t = useTranslations("home.footer");
