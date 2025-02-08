@@ -91,7 +91,7 @@ const Footer = () => {
       </div>
 
       {/* Footer Bottom */}
-      <div className="mt-8 flex items-center justify-center space-x-4 text-center text-sm text-light-400 dark:text-light-500">
+      <div className="mt-8 flex flex-col items-center justify-center space-y-4 text-center text-sm text-light-400 dark:text-light-500 md:flex-row md:space-x-4 md:space-y-0">
         <span>
           {t("copyright")} &copy; {currentYear}
         </span>
@@ -111,7 +111,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="text-light-400 transition-colors hover:text-primary-500 dark:text-light-500 dark:hover:text-primary-500"
           >
-            <div className="relative h-5 w-5 ">
+            <div className="relative h-5 w-5">
               <Image
                 src="/icons/x.svg"
                 fill
