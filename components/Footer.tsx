@@ -2,8 +2,10 @@
 
 import { useTranslations } from "next-intl";
 import React from "react";
-
 import { Input } from "@/components/ui/input";
+import { FaInstagram, FaTwitter, FaEnvelope, FaPhone } from "react-icons/fa"; // Import icons
+import Link from "next/link";
+import Image from "next/image";
 
 const Footer = () => {
   const t = useTranslations("home.footer");
@@ -89,8 +91,49 @@ const Footer = () => {
       </div>
 
       {/* Footer Bottom */}
-      <div className="mt-8 text-center text-sm text-light-400 dark:text-light-500">
-        {t("copyright")} &copy; {currentYear}
+      <div className="mt-8 flex items-center justify-center space-x-4 text-center text-sm text-light-400 dark:text-light-500">
+        <span>
+          {t("copyright")} &copy; {currentYear}
+        </span>
+        {/* Social Icons */}
+        <div className="flex items-center space-x-4">
+          <Link
+            href="https://www.instagram.com/fakhametaltamleek/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-light-400 transition-colors hover:text-primary-500 dark:text-light-500 dark:hover:text-primary-500"
+          >
+            <FaInstagram className="h-5 w-5" />
+          </Link>
+          <Link
+            href="https://x.com/FakhametAltmlek"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-light-400 transition-colors hover:text-primary-500 dark:text-light-500 dark:hover:text-primary-500"
+          >
+            <div className="relative h-5 w-5 ">
+              <Image
+                src="/icons/x.svg"
+                fill
+                style={{ objectFit: "contain" }}
+                alt="X"
+                className="text-light-400 transition-colors hover:text-primary-500 dark:text-light-500 dark:hover:text-primary-500"
+              />
+            </div>
+          </Link>
+          <Link
+            href="mailto:info@fakhametaltamleek.com"
+            className="text-light-400 transition-colors hover:text-primary-500 dark:text-light-500 dark:hover:text-primary-500"
+          >
+            <FaEnvelope className="h-5 w-5" />
+          </Link>
+          <Link
+            href="tel:+966544934745"
+            className="text-light-400 transition-colors hover:text-primary-500 dark:text-light-500 dark:hover:text-primary-500"
+          >
+            <FaPhone className="h-5 w-5" />
+          </Link>
+        </div>
       </div>
     </footer>
   );
